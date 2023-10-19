@@ -1,7 +1,8 @@
-package com.vladiyak.cryptocurrencyapp
+package com.vladiyak.cryptocurrencyapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.vladiyak.cryptocurrencyapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
