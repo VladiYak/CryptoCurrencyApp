@@ -1,4 +1,4 @@
-package com.vladiyak.api
+package com.vladiyak.cryptocurrencyapp.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

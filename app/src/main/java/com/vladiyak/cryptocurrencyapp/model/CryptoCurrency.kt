@@ -1,4 +1,4 @@
-package alpha.dex.dexcrypto.model
+package com.vladiyak.cryptocurrencyapp.model
 
 import java.io.Serializable
 

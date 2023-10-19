@@ -1,4 +1,5 @@
-package alpha.dex.dexcrypto.model
+package com.vladiyak.cryptocurrencyapp.model
+
 
 data class Data(
     val cryptoCurrencyList: List<CryptoCurrency>,

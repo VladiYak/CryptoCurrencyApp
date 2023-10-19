@@ -1,6 +1,6 @@
-package com.vladiyak.api
+package com.vladiyak.cryptocurrencyapp.api
 
-import alpha.dex.dexcrypto.model.MarketModel
+import com.vladiyak.cryptocurrencyapp.model.MarketModel
 import retrofit2.Response
 import retrofit2.http.GET
 

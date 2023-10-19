@@ -1,4 +1,4 @@
-package alpha.dex.dexcrypto.model
+package com.vladiyak.cryptocurrencyapp.model
 
 data class Quote(
     val dominance: Double,
