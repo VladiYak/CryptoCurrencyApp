@@ -45,7 +45,7 @@ class TopMarketAdapter(var context: Context, val list: List<CryptoCurrency>) :
 
         holder.itemView.setOnClickListener {
             Navigation.findNavController(it).navigate(
-                HomeFragmentDirections.actionHomeFragment2ToDetailsFragment(item)
+                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
             )
         }
 

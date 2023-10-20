@@ -64,7 +64,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -73,6 +73,16 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.5.0")
 
     implementation("com.github.ybq:Android-SpinKit:1.4.0")
+
+    implementation("com.facebook.shimmer:shimmer:0.5.0@aar")
+
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
+
 
 
 }

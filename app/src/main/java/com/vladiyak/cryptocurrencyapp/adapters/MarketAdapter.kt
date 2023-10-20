@@ -65,11 +65,11 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>, var ty
 
             if (type == "home") {
                 Navigation.findNavController(it).navigate(
-                    HomeFragmentDirections.actionHomeFragment2ToDetailsFragment(item)
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
                 )
             } else if (type == "market") {
                 Navigation.findNavController(it).navigate(
-                    MarketFragmentDirections.actionMarketFragment2ToDetailsFragment(item)
+                    MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item)
                 )
             } else {
                 Navigation.findNavController(it).navigate(
