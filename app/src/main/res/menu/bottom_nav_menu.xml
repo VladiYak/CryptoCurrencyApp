@@ -8,14 +8,15 @@
         android:title="Home" />
     <item
         android:id="@+id/newsFragment"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/news"
         android:title="News" />
     <item
         android:id="@+id/marketFragment"
         android:icon="@drawable/stats"
         android:title="Market" />
+
     <item
-        android:id="@+id/favoriteFragment"
-        android:icon="@drawable/fav"
-        android:title="Favorite" />
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="Search" />
 </menu>

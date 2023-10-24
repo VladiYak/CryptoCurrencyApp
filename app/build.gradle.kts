@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     kotlin("kapt")
+    id("kotlin-parcelize")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -38,6 +40,8 @@ android {
 
     buildFeatures {
         viewBinding = true
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
     }
 }
 
@@ -81,6 +85,24 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
+    implementation("com.google.dagger:hilt-android:2.46")
+    kapt("com.google.dagger:hilt-compiler:2.46")
+
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    implementation("io.coil-kt:coil:2.4.0")
+
+    implementation("com.github.Philjay:mpandroidchart:3.1.0")
+
+
+
+
+
+
 
 
 

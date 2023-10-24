@@ -6,42 +6,6 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.vladiyak.cryptocurrencyapp.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.vladiyak.cryptocurrencyapp.fragments.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <argument
-            android:name="detail"
-            app:argType="com.vladiyak.cryptocurrencyapp.model.CryptoCurrency" />
-    </fragment>
-    <fragment
-        android:id="@+id/marketFragment"
-        android:name="com.vladiyak.cryptocurrencyapp.fragments.MarketFragment"
-        android:label="fragment_market"
-        tools:layout="@layout/fragment_market" >
-        <action
-            android:id="@+id/action_marketFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.vladiyak.cryptocurrencyapp.fragments.FavoriteFragment"
-        android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" >
-        <action
-            android:id="@+id/action_favoriteFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/newsFragment"
         android:name="com.vladiyak.cryptocurrencyapp.fragments.news.NewsFragment"
         android:label="fragment_news"
@@ -55,4 +19,40 @@
         android:name="com.vladiyak.cryptocurrencyapp.fragments.news.ArticleOpenFragment"
         android:label="fragment_article_open"
         tools:layout="@layout/fragment_article_open" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.vladiyak.cryptocurrencyapp.fragments.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.vladiyak.cryptocurrencyapp.fragments.details.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="coinId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.vladiyak.cryptocurrencyapp.fragments.market.MarketFragment"
+        android:label="MarketFragment"
+        tools:layout="@layout/fragment_market">
+        <action
+            android:id="@+id/action_marketFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.vladiyak.cryptocurrencyapp.fragments.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

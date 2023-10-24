@@ -6,4 +6,6 @@
     <color name="red">#d6455d</color>
     <color name="shimmer_layout">#202124</color>
     <color name="blue_200">#2050df</color>
+    <color name="indigo_700">#303F9F</color>
+    <color name="indigo_500">#3F51B5</color>
 </resources>

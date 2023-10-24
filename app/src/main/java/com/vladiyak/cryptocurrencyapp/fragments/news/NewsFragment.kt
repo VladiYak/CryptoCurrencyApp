@@ -17,8 +17,10 @@ import com.vladiyak.cryptocurrencyapp.adapters.INewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.adapters.NewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentNewsBinding
 import com.vladiyak.cryptocurrencyapp.utils.ApiResponse
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class NewsFragment : Fragment(), INewsRVAdapter {
 
     private var binding: FragmentNewsBinding? = null
