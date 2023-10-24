@@ -13,8 +13,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.R
-import com.vladiyak.cryptocurrencyapp.adapters.INewsRVAdapter
-import com.vladiyak.cryptocurrencyapp.adapters.NewsRVAdapter
+import com.vladiyak.cryptocurrencyapp.fragments.news.adapter.INewsRVAdapter
+import com.vladiyak.cryptocurrencyapp.fragments.news.adapter.NewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentNewsBinding
 import com.vladiyak.cryptocurrencyapp.utils.ApiResponse
 import dagger.hilt.android.AndroidEntryPoint

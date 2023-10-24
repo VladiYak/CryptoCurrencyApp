@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.adapters
+package com.vladiyak.cryptocurrencyapp.fragments.news.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,9 @@ import com.vladiyak.cryptocurrencyapp.databinding.RvNewsItemBinding
 import com.vladiyak.cryptocurrencyapp.model.NewsData
 import com.vladiyak.cryptocurrencyapp.utils.DateConverter
 
-class NewsRVAdapter(private val listener: INewsRVAdapter): ListAdapter<NewsData, NewsRVAdapter.NewsViewHolder>(NewsDiffCallback()) {
+class NewsRVAdapter(private val listener: INewsRVAdapter): ListAdapter<NewsData, NewsRVAdapter.NewsViewHolder>(
+    NewsDiffCallback()
+) {
 
     class NewsDiffCallback: DiffUtil.ItemCallback<NewsData>() {
         override fun areItemsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {

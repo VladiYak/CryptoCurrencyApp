@@ -15,6 +15,7 @@ import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.CoinSearchResponse
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentSearchBinding
 import com.vladiyak.cryptocurrencyapp.fragments.search.adapter.SearchRecyclerAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem
+import com.vladiyak.cryptocurrencyapp.utils.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
