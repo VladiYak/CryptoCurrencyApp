@@ -30,7 +30,11 @@ data class MarketData(
     val high24h: High24h,
 
     @SerializedName("low_24h")
-    val low24h: Low24h
+    val low24h: Low24h,
+
+    @SerializedName("price_change_percentage_24h")
+    val priceChangePercentage24h: Double = 0.0,
+
 )
 
 data class CurrentPrice(

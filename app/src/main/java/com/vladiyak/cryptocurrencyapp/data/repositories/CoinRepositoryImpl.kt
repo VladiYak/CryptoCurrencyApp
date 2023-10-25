@@ -8,7 +8,9 @@ import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.detail.CoinChartResponse
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.markets.Exchange
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.data.local.FavouriteDao
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
+import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,7 +18,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class CoinRepositoryImpl @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val favouriteDao: FavouriteDao
 ) : CoinRepository {
 
     override fun getCoins() = flow {
@@ -84,5 +87,19 @@ class CoinRepositoryImpl @Inject constructor(
     override suspend fun getCoinChartData(id: String, period: String): Response<CoinChartResponse> {
         return apiService.getCoinChartData(id, "eur", period)
     }
+
+    override fun getAllFavourite(): List<FavouriteEntity> {
+        return favouriteDao.getAllFavourite()
+    }
+
+    override suspend fun delFavourite(favouriteEntity: FavouriteEntity) {
+        favouriteDao.delFavourite(favouriteEntity)
+    }
+
+    override suspend fun addFavourite(favouriteEntity: FavouriteEntity) {
+        favouriteDao.addFavourite(favouriteEntity)
+    }
+
+
 }
 

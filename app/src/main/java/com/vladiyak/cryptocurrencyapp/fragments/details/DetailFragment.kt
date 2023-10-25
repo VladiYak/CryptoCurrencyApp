@@ -22,9 +22,12 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.activities.MainActivity
+import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinItem
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.CoinSearchResponse
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
+import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
+import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.getParcelableArg
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -41,6 +44,8 @@ class DetailFragment : Fragment() {
 
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
+    private val viewModelFav: FavoriteViewModel by viewModels()
+    var coinDetail: CoinDetail? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,6 +67,21 @@ class DetailFragment : Fragment() {
 
         binding.topAppBar.setNavigationOnClickListener {
             findNavController().popBackStack()
+        }
+
+        viewModelFav.allFavouriteCoin.value?.forEach {
+            if (it.coinId == args.coinId) {
+                binding.favtoggleButton.setImageResource(R.drawable.ic_star)
+                binding.favtoggleButton.tag = "ON"
+            }
+        }
+
+        // Handling the Favourite Button
+        binding.favtoggleButton.setOnClickListener {
+
+            // Favourite Listener
+            favouriteListener(binding.coin!!)
+
         }
     }
 
@@ -127,6 +147,33 @@ class DetailFragment : Fragment() {
 //            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_decrease)
 //        }
 //    }
+
+    private fun favouriteListener(data: CoinDetail) {
+        // Creating Favourite Entity
+        val element = FavouriteEntity(
+            data.id,
+            data.name,
+            data.marketData?.currentPrice?.usd.toString(),
+            data.image?.large,
+            data.marketData?.priceChangePercentage24h.toString()
+        )
+
+        if (binding.favtoggleButton.tag != "ON") {
+            // Changing  the Image To Filled
+            binding.favtoggleButton.setImageResource(R.drawable.ic_star)
+            //  Adding To DB
+            viewModelFav.addToFavourites(element)
+            // Changing the TAG to ON
+            binding.favtoggleButton.tag = "ON"
+        } else {
+            // Deleting From Database
+            viewModelFav.removeCoinFromFavourite(element)
+            //Changing the Image To Border
+            binding.favtoggleButton.setImageResource(R.drawable.ic_star_outline)
+            // Setting TAG to OFF
+            binding.favtoggleButton.tag = "OFF"
+        }
+    }
 
     private fun getData(list: List<List<Double>>): Pair<List<String>, List<Entry>> {
         val xAxisValues = arrayListOf<String>()

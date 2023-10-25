@@ -8,6 +8,7 @@ import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.detail.CoinChartResponse
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.markets.Exchange
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
@@ -25,4 +26,10 @@ interface CoinRepository {
     fun search(query: String): Flow<Resource<Search>>
 
     suspend fun getCoinChartData(id: String, period: String): Response<CoinChartResponse>
+
+    fun getAllFavourite(): List<FavouriteEntity>
+
+    suspend fun delFavourite(favouriteEntity: FavouriteEntity)
+
+    suspend fun addFavourite(favouriteEntity: FavouriteEntity)
 }

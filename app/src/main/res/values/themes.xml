@@ -11,5 +11,6 @@
         <item name="chipBackgroundColor">@color/chip_background_color</item>
         <item name="android:textColor">@color/chip_text_color</item>
     </style>
+    <color name="MyCustomLightBg" tools:ignore="MissingDefaultResource">#F2F2F2</color>
 
 </resources>

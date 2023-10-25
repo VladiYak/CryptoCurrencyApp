@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -73,8 +74,12 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    implementation("androidx.room:room-runtime:2.5.0")
-    annotationProcessor("androidx.room:room-compiler:2.5.0")
+    implementation("androidx.room:room-runtime:2.5.1")
+    ksp("androidx.room:room-compiler:2.5.1")
+
+
+    implementation("androidx.room:room-ktx:2.5.1")
+
 
     implementation("com.github.ybq:Android-SpinKit:1.4.0")
 
@@ -97,6 +102,8 @@ dependencies {
     implementation("io.coil-kt:coil:2.4.0")
 
     implementation("com.github.Philjay:mpandroidchart:3.1.0")
+
+    implementation("com.airbnb.android:lottie:6.1.0")
 
 
 

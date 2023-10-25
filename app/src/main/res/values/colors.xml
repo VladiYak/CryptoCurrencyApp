@@ -8,4 +8,8 @@
     <color name="blue_200">#2050df</color>
     <color name="indigo_700">#303F9F</color>
     <color name="indigo_500">#3F51B5</color>
+    <color name="fav_background">#F6F6F6</color>
+    <color name="GreenText">#A2D970</color>
+
+
 </resources>
