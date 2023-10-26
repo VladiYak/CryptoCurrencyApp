@@ -2,6 +2,7 @@ package com.vladiyak.cryptocurrencyapp.fragments.details
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,42 +46,42 @@ class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
     private val viewModelFav: FavoriteViewModel by viewModels()
-    var coinDetail: CoinDetail? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         (activity as MainActivity).supportActionBar?.hide()
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        return binding.root
+        viewModelFav.allFavouriteCoin.value?.forEach {
+            if (it.coinId == args.coinId) {
+                binding.favtoggleButton.setImageResource(R.drawable.fav)
+                binding.favtoggleButton.tag = "ON"
+            }
+        }
+        viewModel.getAllData(args.coinId)
+        viewModel.getCoinDetail(args.coinId)
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getAllData(args.coinId)
+
         observeData()
         selectTimeSpan()
-        viewModel.getCoinDetail(args.coinId)
 
         binding.topAppBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
 
-        viewModelFav.allFavouriteCoin.value?.forEach {
-            if (it.coinId == args.coinId) {
-                binding.favtoggleButton.setImageResource(R.drawable.ic_star)
-                binding.favtoggleButton.tag = "ON"
-            }
-        }
-
-        // Handling the Favourite Button
         binding.favtoggleButton.setOnClickListener {
 
             // Favourite Listener
-            favouriteListener(binding.coin!!)
+            binding.coin?.let {
+                favouriteListener(it)
+            }
 
         }
     }

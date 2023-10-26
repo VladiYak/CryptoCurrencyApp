@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentFavoriteBinding
+import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.adapters.FavouriteHomeAdapter
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem
@@ -20,7 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
-    private lateinit var binding: FragmentFavoriteBinding
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
+
     private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var favoritesAdapter: FavouriteHomeAdapter
 
@@ -29,7 +32,7 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentFavoriteBinding.inflate(layoutInflater)
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
         setRecyclerView()
 
@@ -66,5 +69,10 @@ class FavoriteFragment : Fragment() {
             binding.favouriteRecyclerView.adapter = favoritesAdapter
             favoritesAdapter.submitList(it)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

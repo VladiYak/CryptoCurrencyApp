@@ -7,7 +7,7 @@ import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 interface FavouriteDao {
 
     // Getting All the Fav  Coins
-    @Query("SELECT * FROM Favourite_Table ORDER BY coinId ASC ")
+    @Query("SELECT * FROM Favourite_Table")
     fun getAllFavourite():List<FavouriteEntity>
 
     // Inserting the Coin

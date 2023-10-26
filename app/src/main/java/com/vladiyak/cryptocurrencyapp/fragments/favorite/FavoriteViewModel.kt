@@ -1,5 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.fragments.favorite
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,12 +15,14 @@ import javax.inject.Inject
 class FavoriteViewModel @Inject constructor(
     private val coinRepository: CoinRepository
 ): ViewModel() {
+
     init {
         getAllFavouriteCoin()
     }
 
-    val allFavouriteCoin: MutableLiveData<List<FavouriteEntity>> =
+    private var _allFavouriteCoin: MutableLiveData<List<FavouriteEntity>> =
         MutableLiveData<List<FavouriteEntity>>()
+    val allFavouriteCoin: LiveData<List<FavouriteEntity>> = _allFavouriteCoin
 
 
     fun addToFavourites(favouriteEntity: FavouriteEntity) {
@@ -30,7 +33,7 @@ class FavoriteViewModel @Inject constructor(
 
     fun getAllFavouriteCoin() {
         viewModelScope.launch(Dispatchers.IO) {
-            allFavouriteCoin.postValue(coinRepository.getAllFavourite())
+            _allFavouriteCoin.postValue(coinRepository.getAllFavourite())
         }
     }
 

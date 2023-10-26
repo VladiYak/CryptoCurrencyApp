@@ -1,11 +1,16 @@
 package com.vladiyak.cryptocurrencyapp.activities
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.MenuItem
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,6 +38,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomAppBar.setupWithNavController(navController)
 
+        binding.bottomAppBar.setOnItemSelectedListener { item ->
+            NavigationUI.onNavDestinationSelected(item, navController)
+            navController.popBackStack(item.itemId, inclusive = false)
+            true
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
