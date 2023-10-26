@@ -11,10 +11,6 @@
         android:icon="@drawable/news"
         android:title="News" />
     <item
-        android:id="@+id/marketFragment"
-        android:icon="@drawable/stats"
-        android:title="Market" />
-    <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/fav"
         android:title="Favourite" />

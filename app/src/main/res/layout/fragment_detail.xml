@@ -127,50 +127,60 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider" />
 
-                <RadioGroup
-                    android:id="@+id/radio_group"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checkedButton="@id/radio_button_7"
+                    app:singleSelection="true"
+                    app:selectionRequired="true"
+                    app:checkedChip="@id/chip_1"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/lineChart">
 
-                    <RadioButton
-                        android:id="@+id/radio_button_1"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_1"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
                         android:text="@string/one_day" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_7"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_7"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:text="@string/seven_day" />
+                        android:text="@string/seven_day"/>
 
-                    <RadioButton
-                        android:id="@+id/radio_button_14"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_14"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
                         android:text="@string/fourteen_day" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_30"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_30"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
                         android:text="@string/thirty_day" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_60"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_60"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
                         android:text="@string/sixty_day" />
-                </RadioGroup>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_365"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/one_year" />
+
+                </com.google.android.material.chip.ChipGroup>
 
                 <TextView
                     android:id="@+id/tv_high_24h_label"
@@ -180,7 +190,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/price_high_24h"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_group" />
+                    app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
                 <TextView
                     android:id="@+id/tv_low_24h_label"
@@ -190,7 +200,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/price_low_24h"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_group" />
+                    app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider_for_price"

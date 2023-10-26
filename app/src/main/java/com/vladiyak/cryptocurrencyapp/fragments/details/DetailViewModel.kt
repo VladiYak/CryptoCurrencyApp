@@ -64,6 +64,7 @@ class DetailViewModel @Inject constructor(
             14 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_14DAYS) }
             30 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_30DAYS) }
             60 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_60DAYS) }
+            365 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_365DAYS) }
         }
         getAllData(id)
     }

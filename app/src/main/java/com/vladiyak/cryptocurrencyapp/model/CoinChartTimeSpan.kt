@@ -6,4 +6,5 @@ enum class CoinChartTimeSpan(val value: Int) {
     TIMESPAN_14DAYS(14),
     TIMESPAN_30DAYS(30),
     TIMESPAN_60DAYS(60),
+    TIMESPAN_365DAYS(365),
 }

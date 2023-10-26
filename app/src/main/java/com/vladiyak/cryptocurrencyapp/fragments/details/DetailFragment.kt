@@ -100,14 +100,23 @@ class DetailFragment : Fragment() {
 
     private fun selectTimeSpan(id: String = args.coinId) {
         with(binding) {
-            radioGroup.setOnCheckedChangeListener { _, checkedId ->
-                when (checkedId) {
-                    radioButton1.id -> viewModel.setCoinChartTimeSpan(1, id)
-                    radioButton7.id -> viewModel.setCoinChartTimeSpan(7, id)
-                    radioButton14.id -> viewModel.setCoinChartTimeSpan(14, id)
-                    radioButton30.id -> viewModel.setCoinChartTimeSpan(30, id)
-                    radioButton60.id -> viewModel.setCoinChartTimeSpan(60, id)
-                }
+            chip1.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(1, id)
+            }
+            chip7.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(7, id)
+            }
+            chip14.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(14, id)
+            }
+            chip30.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(30, id)
+            }
+            chip60.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(60, id)
+            }
+            chip365.setOnClickListener {
+                viewModel.setCoinChartTimeSpan(365, id)
             }
         }
     }
