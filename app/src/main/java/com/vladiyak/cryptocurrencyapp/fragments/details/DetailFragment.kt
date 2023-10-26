@@ -1,13 +1,10 @@
 package com.vladiyak.cryptocurrencyapp.fragments.details
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -24,12 +21,9 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinItem
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.CoinSearchResponse
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
-import com.vladiyak.cryptocurrencyapp.utils.getParcelableArg
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -54,27 +48,20 @@ class DetailFragment : Fragment() {
     ): View? {
         (activity as MainActivity).supportActionBar?.hide()
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        viewModelFav.allFavouriteCoin.value?.forEach {
-            if (it.coinId == args.coinId) {
-                binding.favtoggleButton.setImageResource(R.drawable.fav)
-                binding.favtoggleButton.tag = "ON"
-            }
-        }
         viewModel.getAllData(args.coinId)
+        observeData()
         viewModel.getCoinDetail(args.coinId)
-
+        checkingAlreadyFavorite()
+        binding.topAppBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observeData()
         selectTimeSpan()
-
-        binding.topAppBar.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
 
         binding.favtoggleButton.setOnClickListener {
 
@@ -82,7 +69,20 @@ class DetailFragment : Fragment() {
             binding.coin?.let {
                 favouriteListener(it)
             }
+        }
+    }
 
+
+    private fun checkingAlreadyFavorite() {
+        lifecycleScope.launch {
+            viewModelFav.allFavouriteCoin.observe(viewLifecycleOwner) { favouriteEntities ->
+                favouriteEntities.forEach {
+                    if (it.coinId == args.coinId) {
+                        binding.favtoggleButton.setImageResource(R.drawable.ic_star)
+                        binding.favtoggleButton.tag = "ON"
+                    }
+                }
+            }
         }
     }
 
@@ -98,10 +98,10 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun selectTimeSpan(id: String = args.coinId){
-        with(binding){
+    private fun selectTimeSpan(id: String = args.coinId) {
+        with(binding) {
             radioGroup.setOnCheckedChangeListener { _, checkedId ->
-                when(checkedId){
+                when (checkedId) {
                     radioButton1.id -> viewModel.setCoinChartTimeSpan(1, id)
                     radioButton7.id -> viewModel.setCoinChartTimeSpan(7, id)
                     radioButton14.id -> viewModel.setCoinChartTimeSpan(14, id)
@@ -111,6 +111,7 @@ class DetailFragment : Fragment() {
             }
         }
     }
+
     private fun displayLineChart(chartData: Pair<List<String>, List<Entry>>) {
         binding.lineChart.apply {
             val lineDataSet = LineDataSet(chartData.second, "Value")
