@@ -30,6 +30,8 @@ import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
 import com.vladiyak.cryptocurrencyapp.model.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.utils.addPrefix
+import com.vladiyak.cryptocurrencyapp.utils.addSuffix
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -118,47 +120,57 @@ class DetailFragment : Fragment() {
             }
             chip7.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(7, id)
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString()
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                 }
             }
             chip14.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(14, id)
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString()
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                 }
             }
             chip30.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(30, id)
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString()
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                 }
             }
             chip60.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(60, id)
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString()
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                 }
             }
             chip365.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(365, id)
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString()
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                 }
             }
         }
@@ -166,11 +178,13 @@ class DetailFragment : Fragment() {
 
     private fun setDefaultPercentageChange() {
         binding.txtPriceChange.text =
-            viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString()
+            viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString().substring(0, 4).addPrefix("%")
         if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h ?: 0.0) > 0) {
             binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+            binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
         } else {
             binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+            binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
         }
     }
 
