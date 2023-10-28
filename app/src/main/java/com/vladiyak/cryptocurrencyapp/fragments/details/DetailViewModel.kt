@@ -59,7 +59,7 @@ class DetailViewModel @Inject constructor(
     }
     fun setCoinChartTimeSpan(time: Int, id: String) {
         when (time) {
-            1 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_1DAYS) }
+            1 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_1DAYS)}
             7 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_7DAYS) }
             14 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_14DAYS) }
             30 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_30DAYS) }
@@ -68,6 +68,8 @@ class DetailViewModel @Inject constructor(
         }
         getAllData(id)
     }
+
+
 
     override fun onCleared() {
         super.onCleared()

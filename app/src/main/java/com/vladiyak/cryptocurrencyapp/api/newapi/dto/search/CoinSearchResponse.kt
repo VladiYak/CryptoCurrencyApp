@@ -14,5 +14,5 @@ data class CoinSearchResponse(
     @SerializedName("market_cap_rank")
     val marketCapRank: Int,
     @SerializedName("large")
-    val imageUrl: String
+    val imageUrl: String,
 ) : Parcelable

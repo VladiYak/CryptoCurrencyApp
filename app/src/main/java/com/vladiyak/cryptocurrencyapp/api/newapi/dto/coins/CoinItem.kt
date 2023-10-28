@@ -53,5 +53,6 @@ data class CoinItem(
     @SerializedName("last_updated")
     val lastUpdated: String? = null,
     @SerializedName("price_change_percentage_1h_in_currency")
-    val priceChangePercentage1hInCurrency: Double = 0.0,
+    val priceChangePercentage1hInCurrency: Double = 0.0
+
 ): Parcelable

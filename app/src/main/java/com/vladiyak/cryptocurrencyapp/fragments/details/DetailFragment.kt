@@ -1,10 +1,15 @@
 package com.vladiyak.cryptocurrencyapp.fragments.details
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,13 +28,16 @@ import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
+import com.vladiyak.cryptocurrencyapp.model.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import kotlin.math.absoluteValue
 
 
 @AndroidEntryPoint
@@ -57,6 +65,7 @@ class DetailFragment : Fragment() {
         }
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -93,6 +102,9 @@ class DetailFragment : Fragment() {
                     val chartData = getData(state.priceList)
                     displayLineChart(chartData)
                     binding.coin = state.coinDetail
+                    if(state.timeRange.value == 1) {
+                        setDefaultPercentageChange()
+                    }
                 }
             }
         }
@@ -102,22 +114,63 @@ class DetailFragment : Fragment() {
         with(binding) {
             chip1.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(1, id)
+                setDefaultPercentageChange()
             }
             chip7.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(7, id)
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString()
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d ?: 0.0) > 0) {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                } else {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                }
             }
             chip14.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(14, id)
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString()
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d ?: 0.0) > 0) {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                } else {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                }
             }
             chip30.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(30, id)
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString()
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d ?: 0.0) > 0) {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                } else {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                }
             }
             chip60.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(60, id)
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString()
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d ?: 0.0) > 0) {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                } else {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                }
             }
             chip365.setOnClickListener {
                 viewModel.setCoinChartTimeSpan(365, id)
+                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString()
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d ?: 0.0) > 0) {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                } else {
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                }
             }
+        }
+    }
+
+    private fun setDefaultPercentageChange() {
+        binding.txtPriceChange.text =
+            viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString()
+        if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h ?: 0.0) > 0) {
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+        } else {
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
         }
     }
 
@@ -166,7 +219,7 @@ class DetailFragment : Fragment() {
             data.name,
             data.marketData?.currentPrice?.usd.toString(),
             data.image?.large,
-            data.marketData?.priceChangePercentage24h.toString()
+            data.marketData?.priceChangePercentage24h.toString(),
         )
 
         if (binding.favtoggleButton.tag != "ON") {
@@ -201,6 +254,7 @@ class DetailFragment : Fragment() {
 
         return Pair(xAxisValues, entries)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

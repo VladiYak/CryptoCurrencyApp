@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 
-@Database(entities = [FavouriteEntity::class], version = 1, exportSchema = false)
+@Database(entities = [FavouriteEntity::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun favouriteDao(): FavouriteDao

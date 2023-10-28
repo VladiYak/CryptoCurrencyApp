@@ -35,6 +35,23 @@ data class MarketData(
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Double = 0.0,
 
+    @SerializedName("price_change_percentage_7d")
+    val priceChangePercentage7d: Double = 0.0,
+
+    @SerializedName("price_change_percentage_14d")
+    val priceChangePercentage14d: Double = 0.0,
+
+    @SerializedName("price_change_percentage_30d")
+    val priceChangePercentage30d: Double = 0.0,
+
+    @SerializedName("price_change_percentage_60d")
+    val priceChangePercentage60d: Double = 0.0,
+
+    @SerializedName("price_change_percentage_1y")
+    val priceChangePercentage365d: Double = 0.0,
+
+
+
 )
 
 data class CurrentPrice(
@@ -46,5 +63,9 @@ data class High24h(
 )
 
 data class Low24h(
+    val usd: Double
+)
+
+data class PriceChangePercentage24hInCurrency(
     val usd: Double
 )
