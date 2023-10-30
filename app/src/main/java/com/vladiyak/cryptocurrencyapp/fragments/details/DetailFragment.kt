@@ -104,9 +104,7 @@ class DetailFragment : Fragment() {
                     if(state.timeRange.value == 7) {
                         setDefaultPercentageChange()
                     }
-
-                    val chartData = getData(state.priceList)
-                    displayLineChart(chartData)
+                    displayLineChart(state.priceList)
                     binding.coin = state.coinDetail
                 }
             }
@@ -202,23 +200,32 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun displayLineChart(chartData: Pair<List<String>, List<Entry>>) {
+    private fun displayLineChart(chartData: List<List<Double>>) {
         binding.lineChart.apply {
-            val lineDataSet = LineDataSet(chartData.second, "Value")
-            lineDataSet.setDrawFilled(true)
-            val formatter = object : ValueFormatter() {
-                override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-                    return if (value.toInt() < chartData.first.size) chartData.first[value.toInt()] else ""
+            val values = ArrayList<Entry>()
+
+            for (i in chartData.indices) {
+                try {
+                    values.add(
+                        Entry(
+                            chartData[i][0].toFloat(), // timestamp
+                            chartData[i][1].toFloat() // price
+                        )
+                    )
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
                 }
             }
+
+            val lineDataSet = LineDataSet(values, "Value")
+            lineDataSet.setDrawFilled(true)
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-            xAxis.valueFormatter = formatter
             xAxis.labelRotationAngle = 90f
             xAxis.setDrawGridLines(false)
             xAxis.setDrawLabels(false)
             legend.isEnabled = false
-//            xAxis.valueFormatter = XAxisValueFormatter()
+            xAxis.valueFormatter = XAxisValueFormatter()
 
             lineDataSet.setDrawCircles(false)
             lineDataSet.disableDashedLine()
@@ -285,22 +292,6 @@ class DetailFragment : Fragment() {
             // Setting TAG to OFF
             binding.favtoggleButton.tag = "OFF"
         }
-    }
-
-    private fun getData(list: List<List<Double>>): Pair<List<String>, List<Entry>> {
-        val xAxisValues = arrayListOf<String>()
-        val entries = arrayListOf<Entry>()
-
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
-
-        list.forEachIndexed { index, entry ->
-            val date = Date(entry[0].toLong())
-            val label = simpleDateFormat.format(date)
-            xAxisValues.add(label)
-            entries.add(Entry(index.toFloat(), entry[1].toFloat()))
-        }
-
-        return Pair(xAxisValues, entries)
     }
 
     override fun onDestroyView() {
