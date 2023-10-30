@@ -1,6 +1,5 @@
 package com.vladiyak.cryptocurrencyapp.fragments.details
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -26,20 +25,20 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
+import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
-import com.vladiyak.cryptocurrencyapp.model.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.utils.CustomMarkerView
+import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
+import com.vladiyak.cryptocurrencyapp.utils.YAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
-import com.vladiyak.cryptocurrencyapp.utils.addSuffix
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.math.absoluteValue
 
 
 @AndroidEntryPoint
@@ -50,6 +49,7 @@ class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
     private val viewModelFav: FavoriteViewModel by viewModels()
+    private var isIncreasing: Boolean = false
 
 
     override fun onCreateView(
@@ -101,12 +101,13 @@ class DetailFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collectLatest { state ->
+                    if(state.timeRange.value == 7) {
+                        setDefaultPercentageChange()
+                    }
+
                     val chartData = getData(state.priceList)
                     displayLineChart(chartData)
                     binding.coin = state.coinDetail
-                    if(state.timeRange.value == 1) {
-                        setDefaultPercentageChange()
-                    }
                 }
             }
         }
@@ -115,63 +116,74 @@ class DetailFragment : Fragment() {
     private fun selectTimeSpan(id: String = args.coinId) {
         with(binding) {
             chip1.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(1, id)
                 setDefaultPercentageChange()
+                viewModel.setCoinChartTimeSpan(1, id)
             }
             chip7.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(7, id)
                 binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                    isIncreasing = true
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                    isIncreasing = false
                 }
+                viewModel.setCoinChartTimeSpan(7, id)
             }
             chip14.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(14, id)
                 binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                    isIncreasing = true
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                    isIncreasing = false
                 }
+                viewModel.setCoinChartTimeSpan(14, id)
             }
             chip30.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(30, id)
                 binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                    isIncreasing = true
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                    isIncreasing = false
                 }
+                viewModel.setCoinChartTimeSpan(30, id)
             }
             chip60.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(60, id)
                 binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                    isIncreasing = true
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                    isIncreasing = false
                 }
+                viewModel.setCoinChartTimeSpan(60, id)
             }
             chip365.setOnClickListener {
-                viewModel.setCoinChartTimeSpan(365, id)
                 binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString().substring(0, 4).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d ?: 0.0) > 0) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                    isIncreasing = true
                 } else {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                    isIncreasing = false
                 }
+                viewModel.setCoinChartTimeSpan(365, id)
+
             }
         }
     }
@@ -182,9 +194,11 @@ class DetailFragment : Fragment() {
         if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h ?: 0.0) > 0) {
             binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
             binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+            isIncreasing = true
         } else {
             binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
             binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+            isIncreasing = false
         }
     }
 
@@ -198,33 +212,53 @@ class DetailFragment : Fragment() {
                 }
             }
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-
             lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             xAxis.valueFormatter = formatter
             xAxis.labelRotationAngle = 90f
+            xAxis.setDrawGridLines(false)
+            xAxis.setDrawLabels(false)
+            legend.isEnabled = false
+//            xAxis.valueFormatter = XAxisValueFormatter()
 
             lineDataSet.setDrawCircles(false)
             lineDataSet.disableDashedLine()
             lineDataSet.setDrawValues(false)
+            lineDataSet.highLightColor = Color.MAGENTA
+
+            axisRight.setDrawAxisLine(false)
+            axisRight.setDrawGridLines(true)
+            axisRight.setDrawLabels(false)
+            axisRight.gridColor = Color.WHITE
+
+            axisLeft.setDrawAxisLine(false)
+            axisLeft.setDrawGridLines(true)
+            axisLeft.setLabelCount(2, true)
+            axisLeft.textColor = Color.WHITE
+            axisLeft.gridColor = Color.WHITE
+            axisLeft.gridLineWidth = 0.2f
+//            axisLeft.valueFormatter = YAxisValueFormatter()
+
             description.text = "Usd"
             val data = LineData(lineDataSet)
             this.data = data
-//            lineDataSet.fillDrawable = lineFillDrawable()
+            lineDataSet.fillDrawable = lineFillDrawable()
             setTouchEnabled(true)
             setPinchZoom(true)
             invalidate()
-
             animateX(1500, Easing.EaseInExpo)
+            val customMarker = CustomMarkerView(context, R.layout.custom_marker_view)
+            marker = customMarker
+
         }
     }
 
-//    private fun lineFillDrawable(): Drawable? {
-//        return if (args.priceChangePercentage24h > 0) {
-//            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_increase)
-//        } else {
-//            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_decrease)
-//        }
-//    }
+    private fun lineFillDrawable(): Drawable? {
+        return if (isIncreasing) {
+            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_increase)
+        } else {
+            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_decrease)
+        }
+    }
 
     private fun favouriteListener(data: CoinDetail) {
         // Creating Favourite Entity
@@ -268,7 +302,6 @@ class DetailFragment : Fragment() {
 
         return Pair(xAxisValues, entries)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     app:singleSelection="true"
                     app:selectionRequired="true"
-                    app:checkedChip="@id/chip_1"
+                    app:checkedChip="@id/chip_7"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/lineChart">
