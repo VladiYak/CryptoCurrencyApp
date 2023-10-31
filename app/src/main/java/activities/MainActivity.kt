@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.activities
+package activities
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

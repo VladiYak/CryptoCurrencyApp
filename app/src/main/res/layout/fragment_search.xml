@@ -7,6 +7,17 @@
     android:fitsSystemWindows="false"
     tools:context=".fragments.search.SearchFragment">
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        app:indicatorColor="#9FA8DA"
+        android:layout_marginBottom="250dp"
+        app:trackThickness="20dp"
+        android:layout_gravity="center"/>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

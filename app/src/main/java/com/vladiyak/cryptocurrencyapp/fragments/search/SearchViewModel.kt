@@ -26,6 +26,7 @@ class SearchViewModel @Inject constructor(
                 when (result) {
                     is Resource.Success -> {
                         _state.update { it.copy(list = result.data?.coins ?: emptyList()) }
+                        _state.update { it.copy(isLoading = false) }
                     }
 
                     is Resource.Error -> {

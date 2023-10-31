@@ -17,6 +17,7 @@ import com.vladiyak.cryptocurrencyapp.fragments.search.adapter.SearchRecyclerAda
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem
 import com.vladiyak.cryptocurrencyapp.utils.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -72,8 +73,19 @@ class SearchFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.state.collect { state ->
                 adapter.submitList(state.list)
-                if (state.message.isNotEmpty()) {
-                    Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                state.isLoading.let {
+                    when (it) {
+                        true -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+
+                        false -> {
+                            binding.progressBar.visibility = View.INVISIBLE
+                        }
+                    }
+                    if (state.message.isNotEmpty()) {
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

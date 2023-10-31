@@ -23,7 +23,8 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
-import com.vladiyak.cryptocurrencyapp.activities.MainActivity
+import activities.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
@@ -34,6 +35,7 @@ import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.YAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -58,20 +60,18 @@ class DetailFragment : Fragment() {
     ): View? {
         (activity as MainActivity).supportActionBar?.hide()
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getCoinDetail(args.coinId)
         viewModel.getAllData(args.coinId)
         observeData()
-        viewModel.getCoinDetail(args.coinId)
         checkingAlreadyFavorite()
         binding.topAppBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-        return binding.root
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         selectTimeSpan()
 
         binding.favtoggleButton.setOnClickListener {
@@ -101,11 +101,34 @@ class DetailFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collectLatest { state ->
-                    if(state.timeRange.value == 7) {
+                    if (state.timeRange.value == 7) {
                         setDefaultPercentageChange()
                     }
                     displayLineChart(state.priceList)
                     binding.coin = state.coinDetail
+                    state.isLoading.let {
+                        when (it) {
+                            true -> {
+                                binding.progressBar.visibility = View.VISIBLE
+                                binding.materialCardPriceChange.visibility = View.INVISIBLE
+                            }
+
+                            false -> {
+                                binding.progressBar.visibility = View.INVISIBLE
+                                delay(1000)
+                                binding.materialCardPriceChange.visibility = View.VISIBLE
+                            }
+                        }
+
+                        if (state.message.isNotEmpty()) {
+                            Snackbar.make(
+                                requireContext(),
+                                binding.layout,
+                                state.message,
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             }
         }
@@ -118,8 +141,12 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(1, id)
             }
             chip7.setOnClickListener {
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString().substring(0, 4).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d ?: 0.0) > 0) {
+                binding.txtPriceChange.text =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString()
+                        .substring(0, 4).addPrefix("%")
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+                        ?: 0.0) > 0
+                ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
@@ -131,8 +158,12 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(7, id)
             }
             chip14.setOnClickListener {
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString().substring(0, 4).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d ?: 0.0) > 0) {
+                binding.txtPriceChange.text =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString()
+                        .substring(0, 4).addPrefix("%")
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d
+                        ?: 0.0) > 0
+                ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
@@ -144,8 +175,12 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(14, id)
             }
             chip30.setOnClickListener {
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString().substring(0, 4).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d ?: 0.0) > 0) {
+                binding.txtPriceChange.text =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString()
+                        .substring(0, 4).addPrefix("%")
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d
+                        ?: 0.0) > 0
+                ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
@@ -157,8 +192,12 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(30, id)
             }
             chip60.setOnClickListener {
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString().substring(0, 4).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d ?: 0.0) > 0) {
+                binding.txtPriceChange.text =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString()
+                        .substring(0, 4).addPrefix("%")
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d
+                        ?: 0.0) > 0
+                ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
@@ -170,8 +209,12 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(60, id)
             }
             chip365.setOnClickListener {
-                binding.txtPriceChange.text = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString().substring(0, 4).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d ?: 0.0) > 0) {
+                binding.txtPriceChange.text =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString()
+                        .substring(0, 4).addPrefix("%")
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
+                        ?: 0.0) > 0
+                ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
@@ -187,17 +230,20 @@ class DetailFragment : Fragment() {
     }
 
     private fun setDefaultPercentageChange() {
-        binding.txtPriceChange.text =
-            viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString().substring(0, 4).addPrefix("%")
-        if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h ?: 0.0) > 0) {
-            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
-            binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
-            isIncreasing = true
-        } else {
-            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
-            binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
-            isIncreasing = false
-        }
+            binding.txtPriceChange.text =
+                viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString()
+                    .substring(0, 4).addPrefix("%")
+            if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
+                    ?: 0.0) > 0
+            ) {
+                binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                isIncreasing = true
+            } else {
+                binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                isIncreasing = false
+            }
     }
 
     private fun displayLineChart(chartData: List<List<Double>>) {
