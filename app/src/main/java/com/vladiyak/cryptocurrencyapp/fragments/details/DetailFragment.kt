@@ -338,7 +338,6 @@ class DetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        hideBottomNavigationView()
     }
 
     override fun onDestroyView() {
