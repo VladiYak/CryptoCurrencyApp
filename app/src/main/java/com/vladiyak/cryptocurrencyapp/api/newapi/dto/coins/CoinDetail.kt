@@ -50,6 +50,30 @@ data class MarketData(
     @SerializedName("price_change_percentage_1y")
     val priceChangePercentage365d: Double = 0.0,
 
+    @SerializedName("market_cap")
+    val marketCap: MarketCap,
+
+    @SerializedName("total_supply")
+    val totalSupply: Double? = 0.0,
+
+    @SerializedName("circulating_supply")
+    val circulatingSupply: Double? = 0.0,
+
+    @SerializedName("total_volume")
+    val totalVolume: TotalVolume,
+
+    @SerializedName("ath")
+    val ath: Ath,
+
+    @SerializedName("atl")
+    val atl: Atl,
+
+    @SerializedName("ath_date")
+    val athDate: AthDate,
+
+    @SerializedName("atl_date")
+    val atlDate: AthDate,
+
 
 
 )
@@ -66,6 +90,26 @@ data class Low24h(
     val usd: Double
 )
 
-data class PriceChangePercentage24hInCurrency(
+data class MarketCap(
     val usd: Double
+)
+
+data class TotalVolume(
+    val usd: Double
+)
+
+data class Ath(
+    val usd: Double
+)
+
+data class Atl(
+    val usd: Double
+)
+
+data class AthDate(
+    val usd: String
+)
+
+data class AtlDate(
+    val usd: String
 )

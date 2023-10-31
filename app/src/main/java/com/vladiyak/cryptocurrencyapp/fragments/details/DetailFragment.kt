@@ -34,6 +34,8 @@ import com.vladiyak.cryptocurrencyapp.utils.CustomMarkerView
 import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.YAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
+import com.vladiyak.cryptocurrencyapp.utils.hideBottomNavigationView
+import com.vladiyak.cryptocurrencyapp.utils.showBottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -141,9 +143,8 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(1, id)
             }
             chip7.setOnClickListener {
-                binding.txtPriceChange.text =
-                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d.toString()
-                        .substring(0, 4).addPrefix("%")
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
                         ?: 0.0) > 0
                 ) {
@@ -158,9 +159,8 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(7, id)
             }
             chip14.setOnClickListener {
-                binding.txtPriceChange.text =
-                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d.toString()
-                        .substring(0, 4).addPrefix("%")
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d
+                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d
                         ?: 0.0) > 0
                 ) {
@@ -175,9 +175,8 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(14, id)
             }
             chip30.setOnClickListener {
-                binding.txtPriceChange.text =
-                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d.toString()
-                        .substring(0, 4).addPrefix("%")
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d
+                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d
                         ?: 0.0) > 0
                 ) {
@@ -192,9 +191,8 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(30, id)
             }
             chip60.setOnClickListener {
-                binding.txtPriceChange.text =
-                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d.toString()
-                        .substring(0, 4).addPrefix("%")
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d
+                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d
                         ?: 0.0) > 0
                 ) {
@@ -209,9 +207,8 @@ class DetailFragment : Fragment() {
                 viewModel.setCoinChartTimeSpan(60, id)
             }
             chip365.setOnClickListener {
-                binding.txtPriceChange.text =
-                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d.toString()
-                        .substring(0, 4).addPrefix("%")
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
+                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
                         ?: 0.0) > 0
                 ) {
@@ -230,9 +227,8 @@ class DetailFragment : Fragment() {
     }
 
     private fun setDefaultPercentageChange() {
-            binding.txtPriceChange.text =
-                viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h.toString()
-                    .substring(0, 4).addPrefix("%")
+        val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
+            binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
             if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
                     ?: 0.0) > 0
             ) {
@@ -338,6 +334,11 @@ class DetailFragment : Fragment() {
             // Setting TAG to OFF
             binding.favtoggleButton.tag = "OFF"
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideBottomNavigationView()
     }
 
     override fun onDestroyView() {

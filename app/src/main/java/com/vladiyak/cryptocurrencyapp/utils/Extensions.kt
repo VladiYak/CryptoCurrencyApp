@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import java.io.Serializable
+import java.math.RoundingMode
 
 fun Double.format(digits: Int) = "%.${digits}f".format(this)
 

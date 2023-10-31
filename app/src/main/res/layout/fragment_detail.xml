@@ -229,14 +229,25 @@
                 </com.google.android.material.chip.ChipGroup>
 
                 <TextView
+                    android:id="@+id/market_data_label"
+                    style="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Market Data"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/chip_group" />
+
+                <TextView
                     android:id="@+id/tv_high_24h_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/price_high_24h"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/chip_group" />
+                    app:layout_constraintTop_toBottomOf="@id/market_data_label" />
 
                 <TextView
                     android:id="@+id/tv_low_24h_label"
@@ -261,11 +272,10 @@
                     android:id="@+id/tv_high_24h"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:myText="@{coin.marketData.high24h.usd}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/chip_group"
-                    tools:text="$21607" />
+                    app:layout_constraintTop_toBottomOf="@id/market_data_label" />
 
                 <TextView
                     android:id="@+id/tv_low_24h"
@@ -274,8 +284,8 @@
                     android:layout_marginTop="8dp"
                     android:myText="@{coin.marketData.low24h.usd}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divider_for_price"
-                    tools:text="$20211" />
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_price" />
+
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider_for_desc"
@@ -287,34 +297,245 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_low_24h_label" />
 
                 <TextView
-                    android:id="@+id/tv_description_label"
+                    android:id="@+id/tv_market_cap_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/description"
+                    android:text="@string/market_cap"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_low_24h_label" />
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_desc" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/divider_for_description"
+                    android:id="@+id/divider_for_market_cap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_description_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_market_cap_label" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_market_cap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextForMarketCap="@{coin.marketData.marketCap.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_desc" />
+
+                <TextView
+                    android:id="@+id/tv_total_supply_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/total_supply"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_market_cap" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_total_supply"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:layout_marginBottom="?actionBarSize"
-                    android:text="@{coin.description.descriptionEN}"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divider_for_description"
-                    tools:text="description" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_total_supply_label" />
+
+                <TextView
+                    android:id="@+id/tv_total_supply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextForSupply="@{coin.marketData.totalSupply}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_market_cap" />
+
+                <TextView
+                    android:id="@+id/tv_circulating_supply_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/available_supply"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_total_supply" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_circulating_supply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_circulating_supply_label" />
+
+                <TextView
+                    android:id="@+id/tv_circulating_supply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextForSupply="@{coin.marketData.circulatingSupply}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_total_supply" />
+
+                <TextView
+                    android:id="@+id/tv_total_volume_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/total_volume"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_circulating_supply" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_total_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_total_volume_label" />
+
+                <TextView
+                    android:id="@+id/tv_total_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextForVolume="@{coin.marketData.totalVolume.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_circulating_supply" />
+
+                <TextView
+                    android:id="@+id/tv_ath_price_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/all_time_high_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_total_volume" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_ath_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ath_price_label" />
+
+                <TextView
+                    android:id="@+id/tv_ath_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:myText="@{coin.marketData.ath.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_total_volume" />
+
+                <TextView
+                    android:id="@+id/tv_ath_date_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/all_time_high_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_ath_price" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_ath_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ath_date_label" />
+
+                <TextView
+                    android:id="@+id/tv_ath_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextDate="@{coin.marketData.athDate.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_ath_price" />
+
+                <TextView
+                    android:id="@+id/tv_atl_price_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/all_time_low_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_ath_date" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_atl_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_atl_price_label" />
+
+                <TextView
+                    android:id="@+id/tv_atl_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:myText="@{coin.marketData.atl.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_ath_date" />
+
+                <TextView
+                    android:id="@+id/tv_atl_date_label"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/all_time_low_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_atl_price" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_for_atl_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_atl_date_label" />
+
+                <TextView
+                    android:id="@+id/tv_atl_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="?actionBarSize"
+                    android:TextDate="@{coin.marketData.atlDate.usd}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_atl_price" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Test"
+                    android:layout_marginTop="100dp"
+                    app:layout_constraintTop_toBottomOf="@id/divider_for_atl_price"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

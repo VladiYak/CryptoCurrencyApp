@@ -16,6 +16,7 @@ import com.vladiyak.cryptocurrencyapp.databinding.FragmentSearchBinding
 import com.vladiyak.cryptocurrencyapp.fragments.search.adapter.SearchRecyclerAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem
 import com.vladiyak.cryptocurrencyapp.utils.hideKeyboard
+import com.vladiyak.cryptocurrencyapp.utils.showBottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -89,6 +90,11 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigationView()
     }
 
     override fun onDestroyView() {
