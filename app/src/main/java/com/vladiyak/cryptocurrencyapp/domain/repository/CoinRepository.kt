@@ -19,7 +19,7 @@ interface CoinRepository {
     fun getCoins(): Flow<Resource<List<CoinItem>>>
     fun getTrendingCoins(): Flow<Resource<List<TrendingCoin>>>
 
-    fun getMarketChart(id: String, day: Int): Flow<Resource<CoinMarketChart>>
+    fun getMarketChart(id: String, day: String): Flow<Resource<CoinMarketChart>>
 
     fun getCoinDetail(id: String): Flow<Resource<CoinDetail>>
 

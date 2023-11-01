@@ -42,7 +42,7 @@ class CoinRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getMarketChart(id: String, day: Int): Flow<Resource<CoinMarketChart>> = flow {
+    override fun getMarketChart(id: String, day: String): Flow<Resource<CoinMarketChart>> = flow {
         emit(Resource.Loading())
         try {
             val marketCharts = apiService.getMarketCharts(id, days = day)

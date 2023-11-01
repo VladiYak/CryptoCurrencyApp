@@ -45,7 +45,7 @@ fun setTextVolume(textView: TextView, price: Double) {
 
 
 @BindingAdapter("android:TextDate")
-fun setText(textView: TextView, orderDate: String?) {
+fun setTextDate(textView: TextView, orderDate: String?) {
     val zonedFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     val yourDesiredFormat = SimpleDateFormat("dd-MMM-YYYY")
     try {

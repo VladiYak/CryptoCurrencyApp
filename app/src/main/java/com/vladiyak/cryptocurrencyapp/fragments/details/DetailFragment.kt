@@ -103,7 +103,7 @@ class DetailFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collectLatest { state ->
-                    if (state.timeRange.value == 7) {
+                    if (state.timeRange.value == "7") {
                         setDefaultPercentageChange()
                     }
                     displayLineChart(state.priceList)
@@ -139,13 +139,9 @@ class DetailFragment : Fragment() {
     private fun selectTimeSpan(id: String = args.coinId) {
         with(binding) {
             chip1.setOnClickListener {
-                setDefaultPercentageChange()
-                viewModel.setCoinChartTimeSpan(1, id)
-            }
-            chip7.setOnClickListener {
-                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
                 binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
                         ?: 0.0) > 0
                 ) {
                     binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
@@ -156,7 +152,11 @@ class DetailFragment : Fragment() {
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
-                viewModel.setCoinChartTimeSpan(7, id)
+                viewModel.setCoinChartTimeSpan("1", id)
+            }
+            chip7.setOnClickListener {
+                setDefaultPercentageChange()
+                viewModel.setCoinChartTimeSpan("7", id)
             }
             chip14.setOnClickListener {
                 val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d
@@ -172,7 +172,7 @@ class DetailFragment : Fragment() {
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
-                viewModel.setCoinChartTimeSpan(14, id)
+                viewModel.setCoinChartTimeSpan("14", id)
             }
             chip30.setOnClickListener {
                 val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d
@@ -188,26 +188,11 @@ class DetailFragment : Fragment() {
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
-                viewModel.setCoinChartTimeSpan(30, id)
-            }
-            chip60.setOnClickListener {
-                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d
-                binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
-                if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage60d
-                        ?: 0.0) > 0
-                ) {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
-                    binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
-                    isIncreasing = true
-                } else {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
-                    binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
-                    isIncreasing = false
-                }
-                viewModel.setCoinChartTimeSpan(60, id)
+                viewModel.setCoinChartTimeSpan("30", id)
             }
             chip365.setOnClickListener {
-                val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
+                val percent =
+                    viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
                 binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
                         ?: 0.0) > 0
@@ -220,26 +205,50 @@ class DetailFragment : Fragment() {
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
-                viewModel.setCoinChartTimeSpan(365, id)
+                viewModel.setCoinChartTimeSpan("365", id)
 
+            }
+
+            chipMax.setOnClickListener {
+                viewModel.setCoinChartTimeSpan("max", id)
+                lifecycleScope.launch {
+                    delay(1000)
+                    val priceList = viewModel.state.value.priceList
+                    val percent = (if (priceList.isNotEmpty()) {
+                        (priceList.last()[1] / priceList.first()[1] - 1) * 100
+                    } else {
+                        0.0
+                    })
+
+                    binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
+                    if (percent > 0) {
+                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                        binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+                        isIncreasing = true
+                    } else {
+                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                        binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+                        isIncreasing = false
+                    }
+                }
             }
         }
     }
 
     private fun setDefaultPercentageChange() {
-        val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
-            binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
-            if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
-                    ?: 0.0) > 0
-            ) {
-                binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
-                binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
-                isIncreasing = true
-            } else {
-                binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
-                binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
-                isIncreasing = false
-            }
+        val percent = viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+        binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
+        if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
+                ?: 0.0) > 0
+        ) {
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+            binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
+            isIncreasing = true
+        } else {
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+            binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
+            isIncreasing = false
+        }
     }
 
     private fun displayLineChart(chartData: List<List<Double>>) {

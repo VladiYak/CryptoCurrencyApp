@@ -71,6 +71,7 @@
             tools:context=".presentation.detail.DetailFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
@@ -177,10 +178,12 @@
                     android:id="@+id/chip_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:singleLine="true"
                     app:singleSelection="true"
+                    app:chipSpacingHorizontal="6dp"
                     app:selectionRequired="true"
                     app:checkedChip="@id/chip_7"
-                    android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/lineChart">
 
@@ -213,18 +216,18 @@
                         android:text="@string/thirty_day" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_60"
-                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sixty_day" />
-
-                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip_365"
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/one_year" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_max"
+                        style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAX" />
 
                 </com.google.android.material.chip.ChipGroup>
 

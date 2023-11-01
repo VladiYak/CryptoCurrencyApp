@@ -74,15 +74,15 @@ class DetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun setCoinChartTimeSpan(time: Int, id: String) {
+    fun setCoinChartTimeSpan(time: String, id: String) {
         viewModelScope.launch {
             when (time) {
-                1 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_1DAYS) }
-                7 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_7DAYS) }
-                14 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_14DAYS) }
-                30 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_30DAYS) }
-                60 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_60DAYS) }
-                365 -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_365DAYS) }
+                "1" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_1DAYS) }
+                "7" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_7DAYS) }
+                "14" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_14DAYS) }
+                "30" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_30DAYS) }
+                "365" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_365DAYS) }
+                "max" -> _state.update { it.copy(timeRange = CoinChartTimeSpan.TIMESPAN_MAXIMUM) }
             }
             getAllData(id)
         }

@@ -31,8 +31,7 @@ interface ApiService {
     suspend fun getMarketCharts(
         @Path("id") id: String,
         @Query("vs_currency") vsCurrency: String = "usd",
-        @Query("days") days: Int = 7,
-        @Query("interval") interval: String = "daily"
+        @Query("days") days: String = "7",
     ): CoinMarketChart
 
     @GET(ConstantsNew.COIN_DETAIL)
