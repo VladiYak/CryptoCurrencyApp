@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4fc281</color>
+    <color name="greenLine">#009E43</color>
+    <color name="redLine">#DA1400</color>
     <color name="red">#d6455d</color>
     <color name="shimmer_layout">#202124</color>
     <color name="blue_200">#2050df</color>

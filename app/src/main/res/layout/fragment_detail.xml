@@ -20,6 +20,7 @@
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_background_app_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +32,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
                 app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIconTint="@color/white"
                 app:titleCentered="true">
 
                 <ImageView
@@ -40,7 +42,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_gravity="end"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_star_outline"
+                    android:src="@drawable/ic_star"
+                    android:backgroundTint="@color/white"
                     android:tag="OFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +60,6 @@
             android:indeterminate="true"
             app:indicatorColor="#9FA8DA"
             app:trackThickness="20dp"
-            android:layout_marginTop="19dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +74,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_main"
+                android:background="@color/dark_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
@@ -89,6 +92,7 @@
                 <TextView
                     android:id="@+id/tv_coin_name"
                     style="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -102,6 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/white"
                     android:layout_marginStart="8dp"
                     android:text="@{coin.symbol}"
                     app:layout_constraintStart_toEndOf="@id/coin_icon"
@@ -114,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
                     android:myText="@{coin.marketData.currentPrice.usd}"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +132,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/tv_current_price"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:cardBackgroundColor="@color/green">
+                    tools:cardBackgroundColor="@color/greenLine">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -168,7 +174,7 @@
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineChart"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -234,6 +240,7 @@
                 <TextView
                     android:id="@+id/market_data_label"
                     style="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
@@ -245,6 +252,7 @@
                 <TextView
                     android:id="@+id/tv_high_24h_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -255,6 +263,7 @@
                 <TextView
                     android:id="@+id/tv_low_24h_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -264,6 +273,7 @@
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider_for_price"
+                    app:dividerColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -276,6 +286,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:textColor="@color/white"
                     android:myText="@{coin.marketData.high24h.usd}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/market_data_label" />
@@ -285,6 +296,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
                     android:myText="@{coin.marketData.low24h.usd}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_price" />
@@ -295,6 +307,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_low_24h_label" />
@@ -302,6 +315,7 @@
                 <TextView
                     android:id="@+id/tv_market_cap_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -314,6 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_market_cap_label" />
@@ -325,12 +340,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextForMarketCap="@{coin.marketData.marketCap.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_desc" />
 
                 <TextView
                     android:id="@+id/tv_total_supply_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -343,6 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_total_supply_label" />
@@ -354,12 +372,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextForSupply="@{coin.marketData.totalSupply}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_market_cap" />
 
                 <TextView
                     android:id="@+id/tv_circulating_supply_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -372,6 +392,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_circulating_supply_label" />
@@ -383,12 +404,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextForSupply="@{coin.marketData.circulatingSupply}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_total_supply" />
 
                 <TextView
                     android:id="@+id/tv_total_volume_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -401,6 +424,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_total_volume_label" />
@@ -412,12 +436,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextForVolume="@{coin.marketData.totalVolume.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_circulating_supply" />
 
                 <TextView
                     android:id="@+id/tv_ath_price_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -430,6 +456,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_ath_price_label" />
@@ -441,12 +468,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:myText="@{coin.marketData.ath.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_total_volume" />
 
                 <TextView
                     android:id="@+id/tv_ath_date_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -459,6 +488,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_ath_date_label" />
@@ -470,12 +500,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextDate="@{coin.marketData.athDate.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_ath_price" />
 
                 <TextView
                     android:id="@+id/tv_atl_price_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -488,6 +520,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_atl_price_label" />
@@ -499,12 +532,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:myText="@{coin.marketData.atl.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_ath_date" />
 
                 <TextView
                     android:id="@+id/tv_atl_date_label"
                     style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -517,6 +552,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_atl_date_label" />
@@ -528,6 +564,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="?actionBarSize"
                     android:TextDate="@{coin.marketData.atlDate.usd}"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_atl_price" />
 
@@ -535,6 +572,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="125dp"
+                    app:dividerColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/divider_for_atl_date"
                     app:layout_constraintStart_toStartOf="parent"/>
 

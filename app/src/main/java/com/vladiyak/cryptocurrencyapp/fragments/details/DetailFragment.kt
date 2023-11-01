@@ -1,6 +1,5 @@
 package com.vladiyak.cryptocurrencyapp.fragments.details
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,34 +14,24 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.FavoriteViewModel
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.CustomMarkerView
 import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
-import com.vladiyak.cryptocurrencyapp.utils.YAxisValueFormatter
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
-import com.vladiyak.cryptocurrencyapp.utils.hideBottomNavigationView
-import com.vladiyak.cryptocurrencyapp.utils.showBottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 
 @AndroidEntryPoint
@@ -144,11 +133,11 @@ class DetailFragment : Fragment() {
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage24h
                         ?: 0.0) > 0
                 ) {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
                 } else {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
@@ -164,11 +153,11 @@ class DetailFragment : Fragment() {
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage14d
                         ?: 0.0) > 0
                 ) {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
                 } else {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
@@ -180,11 +169,11 @@ class DetailFragment : Fragment() {
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage30d
                         ?: 0.0) > 0
                 ) {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
                 } else {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
@@ -197,11 +186,11 @@ class DetailFragment : Fragment() {
                 if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage365d
                         ?: 0.0) > 0
                 ) {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                     isIncreasing = true
                 } else {
-                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                    binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
                     binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                     isIncreasing = false
                 }
@@ -222,11 +211,11 @@ class DetailFragment : Fragment() {
 
                     binding.txtPriceChange.text = String.format("%.2f", percent).addPrefix("%")
                     if (percent > 0) {
-                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
                         binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
                         isIncreasing = true
                     } else {
-                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+                        binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
                         binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
                         isIncreasing = false
                     }
@@ -241,11 +230,11 @@ class DetailFragment : Fragment() {
         if ((viewModel.state.value.coinDetail?.marketData?.priceChangePercentage7d
                 ?: 0.0) > 0
         ) {
-            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.green))
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.greenLine))
             binding.imageView.setImageResource(R.drawable.ic_arrow_up_24)
             isIncreasing = true
         } else {
-            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.red))
+            binding.materialCardPriceChange.setCardBackgroundColor(resources.getColor(R.color.redLine))
             binding.imageView.setImageResource(R.drawable.ic_arrow_down_24)
             isIncreasing = false
         }
@@ -304,6 +293,8 @@ class DetailFragment : Fragment() {
             val data = LineData(lineDataSet)
             this.data = data
             lineDataSet.fillDrawable = lineFillDrawable()
+            lineDataSet.lineWidth = 2f
+            lineDataSet.color = lineDrawable()
             setTouchEnabled(true)
             setPinchZoom(true)
             invalidate()
@@ -316,9 +307,17 @@ class DetailFragment : Fragment() {
 
     private fun lineFillDrawable(): Drawable? {
         return if (isIncreasing) {
-            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_increase)
+            ContextCompat.getDrawable(requireContext(), R.drawable.chart_fade_green)
         } else {
-            ContextCompat.getDrawable(requireContext(), R.drawable.chart_bg_decrease)
+            ContextCompat.getDrawable(requireContext(), R.drawable.chart_fade_red)
+        }
+    }
+
+    private fun lineDrawable(): Int {
+        return if (isIncreasing) {
+            ContextCompat.getColor(requireContext(), R.color.greenLine)
+        } else {
+            ContextCompat.getColor(requireContext(), R.color.redLine)
         }
     }
 
