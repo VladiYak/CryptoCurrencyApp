@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import activities.MainActivity
+import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinItem
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding

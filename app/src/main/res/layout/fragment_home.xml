@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/dark_background"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -10,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:liftOnScrollTargetViewId="@id/swipe_refresh"
+        android:backgroundTint="@color/dark_background_app_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,8 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:titleCentered="true"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:title="Coin List" />
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -54,17 +55,19 @@
                     android:id="@+id/trendingDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/description_bg"
-                    android:padding="4dp"
-                    android:text="@string/trending_description_string"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/trending_coins"
                     android:visibility="visible" />
 
                 <FrameLayout
                     android:id="@+id/trendingLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/trendingDescription"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -75,19 +78,23 @@
                         android:id="@+id/rvTrendingCoins"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         tools:itemCount="2" />
                 </FrameLayout>
 
                 <TextView
                     android:id="@+id/tvRankings"
                     style="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/trendingLayout"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/rankings"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/top_coins"
                     android:visibility="visible" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -95,6 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/tvRankings"
+                    android:layout_marginTop="10dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 

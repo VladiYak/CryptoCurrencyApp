@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.R
-import activities.MainActivity
+import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentMarketBinding
 import com.vladiyak.cryptocurrencyapp.fragments.market.adapters.MarketRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint

@@ -28,7 +28,6 @@ class TrendingViewHolder(
 
                 tvTrendName.text = coin.item.name
                 tvCoinRank.text = coin.item.marketCapRank.toString()
-                tvTrendPriceBtc.text = coin.item.priceBtc.format(15)
             }
         }
     }

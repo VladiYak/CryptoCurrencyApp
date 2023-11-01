@@ -23,7 +23,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.vladiyak.cryptocurrencyapp.R
-import activities.MainActivity
+import com.vladiyak.cryptocurrencyapp.activities.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
@@ -277,23 +277,27 @@ class DetailFragment : Fragment() {
             xAxis.setDrawLabels(false)
             legend.isEnabled = false
             xAxis.valueFormatter = XAxisValueFormatter()
+            axisLeft.isEnabled = false
+            axisRight.isEnabled = false
+            setScaleEnabled(false)
 
             lineDataSet.setDrawCircles(false)
             lineDataSet.disableDashedLine()
             lineDataSet.setDrawValues(false)
-            lineDataSet.highLightColor = Color.MAGENTA
+            lineDataSet.setDrawHighlightIndicators(false)
 
-            axisRight.setDrawAxisLine(false)
-            axisRight.setDrawGridLines(true)
-            axisRight.setDrawLabels(false)
-            axisRight.gridColor = Color.WHITE
 
-            axisLeft.setDrawAxisLine(false)
-            axisLeft.setDrawGridLines(true)
-            axisLeft.setLabelCount(2, true)
-            axisLeft.textColor = Color.WHITE
-            axisLeft.gridColor = Color.WHITE
-            axisLeft.gridLineWidth = 0.2f
+//            axisRight.setDrawAxisLine(false)
+//            axisRight.setDrawGridLines(true)
+//            axisRight.setDrawLabels(false)
+//            axisRight.gridColor = Color.WHITE
+//
+//            axisLeft.setDrawAxisLine(false)
+//            axisLeft.setDrawGridLines(true)
+//            axisLeft.setLabelCount(2, true)
+//            axisLeft.textColor = Color.WHITE
+//            axisLeft.gridColor = Color.WHITE
+//            axisLeft.gridLineWidth = 0.2f
 //            axisLeft.valueFormatter = YAxisValueFormatter()
 
             description.text = "Usd"
@@ -304,7 +308,7 @@ class DetailFragment : Fragment() {
             setPinchZoom(true)
             invalidate()
             animateX(1500, Easing.EaseInExpo)
-            val customMarker = CustomMarkerView(context, R.layout.custom_marker_view)
+            val customMarker = CustomMarkerView(context, R.layout.chart_hourly_marker_view)
             marker = customMarker
 
         }

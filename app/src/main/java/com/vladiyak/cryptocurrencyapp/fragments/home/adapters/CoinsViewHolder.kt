@@ -39,12 +39,12 @@ class CoinsViewHolder(
                 binding.tvPercentage.setTextColor(
                     Color.parseColor("#50C878")
                 )
-                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_increase)
+//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_increase)
             } else {
                 binding.tvPercentage.setTextColor(
                     Color.parseColor("#FF5733")
                 )
-                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
+//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
             }
         }
     }

@@ -10,6 +10,8 @@
     <color name="indigo_500">#3F51B5</color>
     <color name="fav_background">#F6F6F6</color>
     <color name="GreenText">#A2D970</color>
+    <color name="dark_background">#272727</color>
+    <color name="dark_background_app_bar">#1B1B1B</color>
 
 
 </resources>
