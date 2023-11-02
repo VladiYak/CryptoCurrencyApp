@@ -3,6 +3,7 @@ package com.vladiyak.cryptocurrencyapp.fragments.home.adapters
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -28,6 +29,19 @@ class CoinsViewHolder(
                     crossfade(true)
                     transformations(CircleCropTransformation())
                 }
+                val chartData = item.sparklineIn7d?.price?.map { it.toInt() }?.takeLast(20)
+                val array = chartData?.let { ArrayList(it) }
+                if (array != null) {
+                    chart.setData(array)
+                }
+                if (item.priceChangePercentage7dInCurrency > 0) {
+                    chart.isGradientLine = true
+                    chart.sparkLineColor = Color.parseColor("#00DA5C")
+                } else {
+                    chart.isGradientLine = true
+                    chart.sparkLineColor = Color.parseColor("#FF1A1A")
+                }
+
 
                 tvCoinName.text = item.name
                 tvCoinSymbol.text = item.symbol.uppercase(Locale.ROOT)
@@ -46,6 +60,8 @@ class CoinsViewHolder(
                 )
 //                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
             }
+
+
         }
     }
 

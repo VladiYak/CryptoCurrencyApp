@@ -29,6 +29,8 @@ data class CoinItem(
     val priceChange24h: Double = 0.0,
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Double = 0.0,
+    @SerializedName("price_change_percentage_7d_in_currency")
+    val priceChangePercentage7dInCurrency: Double = 0.0,
     @SerializedName("market_cap_change_24h")
     val marketCapChange24h: Double = 0.0,
     @SerializedName("market_cap_change_percentage_24h")
@@ -53,6 +55,13 @@ data class CoinItem(
     @SerializedName("last_updated")
     val lastUpdated: String? = null,
     @SerializedName("price_change_percentage_1h_in_currency")
-    val priceChangePercentage1hInCurrency: Double = 0.0
+    val priceChangePercentage1hInCurrency: Double = 0.0,
+    @SerializedName("sparkline_in_7d")
+    val sparklineIn7d: SparklineIn7d? = null
 
-): Parcelable
+) : Parcelable
+
+@Parcelize
+data class SparklineIn7d(
+    val price: List<Double>? = null
+) : Parcelable

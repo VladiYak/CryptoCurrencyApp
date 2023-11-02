@@ -105,6 +105,10 @@ dependencies {
 
     implementation("com.airbnb.android:lottie:6.1.0")
 
+    implementation("com.github.majorkik:SparkLineLayout:1.0.1")
+
+    implementation("com.robinhood.spark:spark:1.2.0")
+
 
 
 
