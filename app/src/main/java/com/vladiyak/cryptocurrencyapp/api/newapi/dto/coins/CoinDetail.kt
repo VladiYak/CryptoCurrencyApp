@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class CoinDetail(
     val id: String = "",
-    val symbol: String = "",
     val name: String = "",
+    val symbol: String = "",
     val categories: List<String>? = null,
     val description: Description? = null,
     val image: CoinImage? = null,

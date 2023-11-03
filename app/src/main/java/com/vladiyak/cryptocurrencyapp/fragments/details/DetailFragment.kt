@@ -276,18 +276,6 @@ class DetailFragment : Fragment() {
             lineDataSet.setDrawHighlightIndicators(false)
 
 
-//            axisRight.setDrawAxisLine(false)
-//            axisRight.setDrawGridLines(true)
-//            axisRight.setDrawLabels(false)
-//            axisRight.gridColor = Color.WHITE
-//
-//            axisLeft.setDrawAxisLine(false)
-//            axisLeft.setDrawGridLines(true)
-//            axisLeft.setLabelCount(2, true)
-//            axisLeft.textColor = Color.WHITE
-//            axisLeft.gridColor = Color.WHITE
-//            axisLeft.gridLineWidth = 0.2f
-//            axisLeft.valueFormatter = YAxisValueFormatter()
 
             description.text = "Usd"
             val data = LineData(lineDataSet)
@@ -326,6 +314,7 @@ class DetailFragment : Fragment() {
         val element = FavouriteEntity(
             data.id,
             data.name,
+            data.symbol,
             data.marketData?.currentPrice?.usd.toString(),
             data.image?.large,
             data.marketData?.priceChangePercentage24h.toString(),

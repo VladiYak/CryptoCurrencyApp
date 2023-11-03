@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -31,6 +32,8 @@ class HomeViewModel @Inject constructor(
             when(result){
                 is Resource.Success -> {
                     _state.update { it.copy(coinList = result.data ?: emptyList()) }
+                    _state.update { it.copy(isLoading = false) }
+
                 }
                 is Resource.Loading -> {
                     _state.update { it.copy(isLoading = true) }
@@ -47,6 +50,7 @@ class HomeViewModel @Inject constructor(
             when(result){
                 is Resource.Success -> {
                     _state.update { it.copy(trendingCoinList = result.data ?: emptyList()) }
+                    _state.update { it.copy(isLoading = false) }
                 }
                 is Resource.Loading -> {
                     _state.update { it.copy(isLoading = true) }

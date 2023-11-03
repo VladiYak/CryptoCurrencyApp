@@ -11,6 +11,8 @@ data class FavouriteEntity(
     val coinId: String,
     @ColumnInfo(name = "coin_Name")
     val coinName: String?,
+    @ColumnInfo("symbol")
+    val symbol: String,
     @ColumnInfo(name = "coin_Price")
     val price: String?,
     @ColumnInfo(name = "coin_Image_Link")

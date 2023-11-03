@@ -109,6 +109,7 @@ dependencies {
 
     implementation("com.robinhood.spark:spark:1.2.0")
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
 
 

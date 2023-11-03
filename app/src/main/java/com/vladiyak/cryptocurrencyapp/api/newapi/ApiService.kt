@@ -16,7 +16,14 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET(ConstantsNew.COIN_LIST_URL)
-    suspend fun getCoinList(): List<CoinItem>
+    suspend fun getCoinList(
+        @Query("vs_currency") currency: String = "usd",
+        @Query("page") page: Int = 1,
+        @Query("per_page") numCoinsPerPage: Int = 100,
+        @Query("order") order: String = "market_cap_desc",
+        @Query("sparkline") includeSparkline7dData: Boolean = true,
+        @Query("price_change_percentage") priceChangePercentageIntervals: String = "7d",
+    ): List<CoinItem>
 
     @GET(ConstantsNew.TRENDING_URL)
     suspend fun getTrendingCoins(): Trending

@@ -64,15 +64,16 @@ class HomeFragment : Fragment() {
             }
         })
 
-        adapterTrending = TrendingCoinsAdapter(onClickListener = object : OnClickListenerTrendingItem {
-            override fun onItemClick(coin: TrendingCoin) {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(
-                    coin.item.id
-                )
-                findNavController().navigate(action)
-            }
+        adapterTrending =
+            TrendingCoinsAdapter(onClickListener = object : OnClickListenerTrendingItem {
+                override fun onItemClick(coin: TrendingCoin) {
+                    val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                        coin.item.id
+                    )
+                    findNavController().navigate(action)
+                }
 
-        })
+            })
         binding.rvCoinList.adapter = adapterCoins
         val rvTrending = binding.rvTrendingCoins
         rvTrending.layoutManager =
@@ -87,9 +88,15 @@ class HomeFragment : Fragment() {
                     viewModel.state.collect { state ->
                         adapterCoins.submitList(state.coinList)
                         adapterTrending.submitList(state.trendingCoinList)
+
                         state.isLoading.let {
-                            if (it) binding.progressBar.visibility = View.VISIBLE
-                            else binding.progressBar.visibility = View.GONE
+                            if (it) {
+                                binding.progressBar.visibility = View.VISIBLE
+                                binding.nestedScrollView.visibility = View.GONE
+                            } else {
+                                binding.progressBar.visibility = View.GONE
+                                binding.nestedScrollView.visibility = View.VISIBLE
+                            }
                         }
                         if (state.message.isNotEmpty()) {
                             Snackbar.make(

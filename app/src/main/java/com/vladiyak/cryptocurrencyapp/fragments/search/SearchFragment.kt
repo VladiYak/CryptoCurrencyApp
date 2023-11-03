@@ -45,7 +45,6 @@ class SearchFragment : Fragment() {
         observeData()
         binding.searchView.editText.setOnEditorActionListener { textView, actionId, keyEvent ->
             binding.searchBar.text = binding.searchView.text
-            binding.tvDnme.text = binding.searchBar.text
             binding.searchView.hide()
             false
         }
