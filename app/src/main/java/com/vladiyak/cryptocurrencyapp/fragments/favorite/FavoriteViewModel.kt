@@ -16,10 +16,6 @@ class FavoriteViewModel @Inject constructor(
     private val coinRepository: CoinRepository
 ): ViewModel() {
 
-    init {
-        getAllFavouriteCoin()
-    }
-
     private var _allFavouriteCoin: MutableLiveData<List<FavouriteEntity>> =
         MutableLiveData<List<FavouriteEntity>>()
     val allFavouriteCoin: LiveData<List<FavouriteEntity>> = _allFavouriteCoin
@@ -41,5 +37,8 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             coinRepository.delFavourite(entity)
         }
+    }
+    init {
+        getAllFavouriteCoin()
     }
 }
