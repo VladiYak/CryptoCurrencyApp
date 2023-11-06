@@ -36,14 +36,27 @@
         tools:text="Bitcoin" />
 
     <TextView
-        android:id="@+id/tvCoinSymbol"
+        android:id="@+id/tvCoinRank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_corners_rank"
         style="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="@color/white"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/coinImage"
         app:layout_constraintTop_toBottomOf="@id/tvCoinName"
+        tools:text="25" />
+
+    <TextView
+        android:id="@+id/tvCoinSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:textColor="@color/white"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@id/tvCoinRank"
+        app:layout_constraintTop_toTopOf="@id/tvCoinRank"
+        app:layout_constraintBottom_toBottomOf="@id/tvCoinRank"
         tools:text="BTC" />
 
     <com.majorik.sparklinelibrary.SparkLineLayout
@@ -73,6 +86,7 @@
         android:id="@+id/tvPercentage"
         style="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="@color/white"
+        android:background="@drawable/background_corners_percent_increase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"

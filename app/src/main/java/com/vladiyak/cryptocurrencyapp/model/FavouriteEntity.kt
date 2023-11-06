@@ -9,14 +9,14 @@ import com.google.gson.annotations.SerializedName
 data class FavouriteEntity(
     @PrimaryKey
     val coinId: String,
-    @ColumnInfo(name = "coin_Name")
+    @ColumnInfo(name = "coinName")
     val coinName: String?,
     @ColumnInfo("symbol")
     val symbol: String,
-    @ColumnInfo(name = "coin_Price")
+    @ColumnInfo(name = "coinPrice")
     val price: String?,
-    @ColumnInfo(name = "coin_Image_Link")
-    val coin_Image_Link: String?,
-    @ColumnInfo(name = "coin_Change_In_24H")
-    val coin_Change_In_24H: String?,
+    @ColumnInfo(name = "coinImage")
+    val coinImage: String?,
+    @ColumnInfo(name = "priceChangePercentage7d")
+    val priceChangePercentage7d: Double?,
     )

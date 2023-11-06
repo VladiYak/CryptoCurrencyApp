@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FavoriteRvItemBinding
 import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem
@@ -25,7 +26,7 @@ class FavouriteViewHolder(
 //                    .load(item.coin_Image_Link)
 //                    .placeholder(R.drawable.ic_icons8_loading)
 //                    .into(CoinImage)
-                coinImage.load(item.coin_Image_Link) {
+                coinImage.load(item.coinImage) {
                     crossfade(true)
                     transformations(CircleCropTransformation())
                 }
@@ -38,7 +39,19 @@ class FavouriteViewHolder(
                 //Setting Price of Coin
                 tvCoinPrice.text = item.price.toString().addPrefix("$")
 
-                tvPercentage.text = item.coin_Change_In_24H?.addSuffix("%")
+                tvPercentage.text = item.priceChangePercentage7d?.toString()?.addSuffix("%")
+
+                if ((item.priceChangePercentage7d ?: 0.0) > 0) {
+                    binding.tvPercentage.setBackgroundResource(
+                        R.drawable.background_corners_percent_increase
+                    )
+//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_increase)
+                } else {
+                    binding.tvPercentage.setBackgroundResource(
+                        R.drawable.background_corners_percent_decrease
+                    )
+//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
+                }
             }
         }
     }

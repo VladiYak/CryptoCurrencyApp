@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_layout"
-        android:background="@color/dark_background"
+        android:background="@color/cardview_dark_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -21,19 +21,31 @@
             android:id="@+id/tv_market_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_corners_rank"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
             tools:text="24" />
+
+        <TextView
+            android:id="@+id/tv_symbol"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_market_rank"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="BTC" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/icon_dimens"
             android:layout_height="@dimen/icon_dimens"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toEndOf="@id/tv_market_rank"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
             tools:src="@drawable/ic_launcher_background" />
@@ -45,7 +57,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bitcoin" />

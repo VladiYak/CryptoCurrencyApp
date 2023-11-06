@@ -317,7 +317,7 @@ class DetailFragment : Fragment() {
             data.symbol,
             data.marketData?.currentPrice?.usd.toString(),
             data.image?.large,
-            data.marketData?.priceChangePercentage24h.toString(),
+            data.marketData?.priceChangePercentage7d,
         )
 
         if (binding.favtoggleButton.tag != "ON") {

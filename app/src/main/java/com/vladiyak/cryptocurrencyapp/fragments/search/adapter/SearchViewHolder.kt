@@ -20,6 +20,7 @@ class SearchViewHolder(val binding: SearchItemBinding) :
             binding.apply {
                 with(binding) {
                     tvMarketRank.text = item.marketCapRank.toString()
+                    tvSymbol.text = item.symbol
                     ivIcon.load(item.imageUrl) {
                         crossfade(true)
                         transformations(CircleCropTransformation())

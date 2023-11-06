@@ -27,6 +27,7 @@ class TrendingViewHolder(
                 }
 
                 tvTrendName.text = coin.item.name
+                tvCoinSymbol.text = coin.item.symbol
                 tvCoinRank.text = coin.item.marketCapRank.toString()
             }
         }

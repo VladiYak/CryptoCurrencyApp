@@ -5,8 +5,8 @@
     style="?attr/materialCardViewElevatedStyle"
     android:backgroundTint="@color/cardview_dark_background"
     android:id="@+id/materialCard"
-    android:layout_width="125dp"
-    android:layout_height="100dp"
+    android:layout_width="150dp"
+    android:layout_height="125dp"
     android:layout_margin="8dp"
     android:elevation="8dp">
 
@@ -22,34 +22,52 @@
             android:contentDescription="@string/trending_coin_icon"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_trend_name"
             style="@style/TextAppearance.Material3.TitleMedium"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_coin_rank"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_trend_icon"
             tools:text="Gains Network" />
 
         <TextView
             android:id="@+id/tv_coin_rank"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/background_corners_rank"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/tv_trend_name"
-            app:layout_constraintTop_toTopOf="@id/tv_trend_name"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_trend_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_trend_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_trend_name"
             tools:text="205" />
+
+        <TextView
+            android:id="@+id/tv_coin_symbol"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_coin_rank"
+            app:layout_constraintStart_toEndOf="@+id/tv_coin_rank"
+            app:layout_constraintTop_toTopOf="@+id/tv_coin_rank"
+            tools:text="BTC" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
