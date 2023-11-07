@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentSearchBinding
 import com.vladiyak.cryptocurrencyapp.fragments.search.adapter.SearchRecyclerAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem
@@ -20,12 +21,12 @@ import com.vladiyak.cryptocurrencyapp.utils.showBottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
-    private var _binding: FragmentSearchBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSearchBinding
 
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var adapter: SearchRecyclerAdapter
@@ -34,14 +35,14 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        setupRecyclerView()
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
         observeData()
         binding.searchView.editText.setOnEditorActionListener { textView, actionId, keyEvent ->
             binding.searchBar.text = binding.searchView.text
@@ -90,14 +91,8 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
     override fun onResume() {
         super.onResume()
         showBottomNavigationView()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.R
+import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentFavoriteBinding
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding
 import com.vladiyak.cryptocurrencyapp.fragments.favorite.adapters.FavouriteHomeAdapter
@@ -18,13 +19,15 @@ import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentFavoriteBinding
+        get() = _binding ?: throw RuntimeException("FragmentFavoriteBinding == null")
 
     private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var favoritesAdapter: FavouriteHomeAdapter
@@ -35,6 +38,11 @@ class FavoriteFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setRecyclerView()
 
@@ -47,7 +55,6 @@ class FavoriteFragment : Fragment() {
             findNavController().navigate(R.id.action_favoriteFragment_to_homeFragment)
         }
 
-        return binding.root
     }
 
     private fun setRecyclerView() {

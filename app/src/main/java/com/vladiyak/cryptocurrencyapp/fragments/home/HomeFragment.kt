@@ -22,12 +22,14 @@ import com.vladiyak.cryptocurrencyapp.utils.OnClickListener
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerTrendingItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentHomeBinding
+        get() = _binding ?: throw RuntimeException("FragmentHomeBinding == null")
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var adapterCoins: CoinsRecyclerAdapter

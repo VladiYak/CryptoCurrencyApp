@@ -32,12 +32,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentDetailBinding
+        get() = _binding ?: throw RuntimeException("FragmentDetailBinding == null")
 
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()

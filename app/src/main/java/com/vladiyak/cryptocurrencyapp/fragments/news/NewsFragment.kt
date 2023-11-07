@@ -13,17 +13,22 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.R
+import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding
 import com.vladiyak.cryptocurrencyapp.fragments.news.adapter.INewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.fragments.news.adapter.NewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentNewsBinding
 import com.vladiyak.cryptocurrencyapp.utils.ApiResponse
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.RuntimeException
 
 
 @AndroidEntryPoint
 class NewsFragment : Fragment(), INewsRVAdapter {
 
-    private var binding: FragmentNewsBinding? = null
+    private var _binding: FragmentNewsBinding? = null
+    private val binding: FragmentNewsBinding
+        get() = _binding ?: throw RuntimeException("FragmentHomeBinding == null")
+
     private val newsAdapter = NewsRVAdapter(this)
     private lateinit var viewModel: NewsViewModel
     private lateinit var navController: NavController
@@ -33,8 +38,8 @@ class NewsFragment : Fragment(), INewsRVAdapter {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentNewsBinding.inflate(inflater, container, false)
-        return binding?.root
+        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,18 +59,18 @@ class NewsFragment : Fragment(), INewsRVAdapter {
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is ApiResponse.Success -> {
-                    binding?.shimmerLayoutNews?.stopShimmer()
-                    binding?.shimmerLayoutNews?.visibility = View.GONE
-                    binding?.rvNews?.visibility = View.VISIBLE
+                    _binding?.shimmerLayoutNews?.stopShimmer()
+                    _binding?.shimmerLayoutNews?.visibility = View.GONE
+                    _binding?.rvNews?.visibility = View.VISIBLE
                     newsAdapter.submitList(response.data)
                 }
                 is ApiResponse.Loading -> {
-                    binding?.shimmerLayoutNews?.visibility = View.VISIBLE
-                    binding?.shimmerLayoutNews?.startShimmer()
+                    _binding?.shimmerLayoutNews?.visibility = View.VISIBLE
+                    _binding?.shimmerLayoutNews?.startShimmer()
                 }
                 is ApiResponse.Error -> {
-                    binding?.shimmerLayoutNews?.stopShimmer()
-                    binding?.shimmerLayoutNews?.visibility = View.GONE
+                    _binding?.shimmerLayoutNews?.stopShimmer()
+                    _binding?.shimmerLayoutNews?.visibility = View.GONE
                     Snackbar.make(view, "Could yes retrieve news, restart app!", Snackbar.LENGTH_SHORT).show()
                 }
             }
@@ -74,19 +79,19 @@ class NewsFragment : Fragment(), INewsRVAdapter {
     }
 
     private fun setUpRecyclerView() {
-        binding?.rvNews?.apply {
+        _binding?.rvNews?.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
-    }
-
     override fun onNewsArticleClicked(url: String) {
         val bundle = bundleOf("articleUrl" to url)
         navController.navigate(R.id.action_newsFragment_to_articleOpenFragment, bundle)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
