@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.RvNewsItemBinding
-import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
+import com.vladiyak.cryptocurrencyapp.domain.models.NewsData
 import com.vladiyak.cryptocurrencyapp.utils.DateConverter
 
 class NewsRVAdapter(private val listener: INewsRVAdapter): ListAdapter<NewsData, NewsRVAdapter.NewsViewHolder>(

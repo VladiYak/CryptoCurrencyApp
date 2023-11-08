@@ -2,12 +2,11 @@ package com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
 
 @JsonClass(generateAdapter = true)
-data class NewsResponse(
+data class NewsResponseDto(
     @Json(name = "Data")
-    val `data`: List<NewsData>?,
+    val `data`: List<NewsDataDto>?,
     @Json(name = "Message")
     val message: String?,
     @Json(name = "Promoted")

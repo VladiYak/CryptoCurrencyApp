@@ -21,7 +21,6 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.MainActivity
 import com.vladiyak.cryptocurrencyapp.R
-import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin

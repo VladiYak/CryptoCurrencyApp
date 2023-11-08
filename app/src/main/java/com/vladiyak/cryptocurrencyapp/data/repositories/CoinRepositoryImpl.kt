@@ -1,16 +1,19 @@
 package com.vladiyak.cryptocurrencyapp.data.repositories
 
 
-import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntityMapper
+import com.vladiyak.cryptocurrencyapp.data.local.mappers.FavoriteEntityMapper
 import com.vladiyak.cryptocurrencyapp.data.local.FavouriteDao
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.CoinGeckoApiService
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.Search
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinDetailDtoMapper
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinItemDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinMarketChartDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.SearchDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.TrendingDtoMapper
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
+import com.vladiyak.cryptocurrencyapp.domain.models.Search
+import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +25,10 @@ class CoinRepositoryImpl @Inject constructor(
     private val favouriteDao: FavouriteDao,
     private val coinDetailMapper: CoinDetailDtoMapper,
     private val coinMapper: CoinItemDtoMapper,
-    private val entityMapper: FavoriteEntityMapper
+    private val entityMapper: FavoriteEntityMapper,
+    private val marketChartDtoMapper: CoinMarketChartDtoMapper,
+    private val trendingDtoMapper: TrendingDtoMapper,
+    private val searchDtoMapper: SearchDtoMapper
 ) : CoinRepository {
 
     override fun getCoins() = flow {
@@ -39,7 +45,7 @@ class CoinRepositoryImpl @Inject constructor(
         emit(Resource.Loading())
         try {
             val coins = apiService.getTrendingCoins().coins
-            emit(Resource.Success(data = coins))
+            emit(Resource.Success(data = trendingDtoMapper.mapCoins(coins)))
         } catch (e: Exception) {
             emit(Resource.Error(message = e.localizedMessage ?: "An error occurred!"))
         }
@@ -49,7 +55,7 @@ class CoinRepositoryImpl @Inject constructor(
         emit(Resource.Loading())
         try {
             val marketCharts = apiService.getMarketCharts(id, days = day)
-            emit(Resource.Success(marketCharts))
+            emit(Resource.Success(data = marketChartDtoMapper.mapToDomainModel(marketCharts)))
         } catch (e: Exception) {
             emit(Resource.Error(message = e.localizedMessage ?: "An error occurred!"))
         }
@@ -70,7 +76,7 @@ class CoinRepositoryImpl @Inject constructor(
             try {
                 emit(Resource.Loading())
                 val searchQuery = apiService.search(query = query)
-                emit(Resource.Success(searchQuery))
+                emit(Resource.Success(data = searchDtoMapper.mapToDomainModel(searchQuery)))
             } catch (e: Exception) {
                 emit(Resource.Error(message = e.localizedMessage ?: "An error occurred!"))
             }

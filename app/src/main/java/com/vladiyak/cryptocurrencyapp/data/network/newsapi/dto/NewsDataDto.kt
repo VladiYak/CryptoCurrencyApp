@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 
 @JsonClass(generateAdapter = true)
-data class NewsData(
+data class NewsDataDto(
     @Json(name = "body")
     val body: String?,
     @Json(name = "categories")
@@ -25,7 +25,7 @@ data class NewsData(
     @Json(name = "source")
     val source: String?,
     @Json(name = "source_info")
-    val sourceInfo: SourceInfo?,
+    val sourceInfo: SourceInfoDto?,
     @Json(name = "tags")
     val tags: String?,
     @Json(name = "title")

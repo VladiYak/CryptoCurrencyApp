@@ -1,7 +1,8 @@
-package com.vladiyak.cryptocurrencyapp.data.local
+package com.vladiyak.cryptocurrencyapp.data.local.mappers
 
+import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
-import com.vladiyak.cryptocurrencyapp.domain.util.DomainMapper
+import com.vladiyak.cryptocurrencyapp.utils.DomainMapper
 
 class FavoriteEntityMapper : DomainMapper<FavouriteEntity, FavoriteCoin> {
     override fun mapToDomainModel(model: FavouriteEntity): FavoriteCoin {

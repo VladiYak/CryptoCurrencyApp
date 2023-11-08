@@ -1,12 +1,13 @@
 package com.vladiyak.cryptocurrencyapp.domain.repository
 
 
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
+import com.vladiyak.cryptocurrencyapp.domain.models.Search
+import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 

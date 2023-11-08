@@ -26,7 +26,7 @@ import com.vladiyak.cryptocurrencyapp.domain.models.Low24h
 import com.vladiyak.cryptocurrencyapp.domain.models.MarketCap
 import com.vladiyak.cryptocurrencyapp.domain.models.MarketData
 import com.vladiyak.cryptocurrencyapp.domain.models.TotalVolume
-import com.vladiyak.cryptocurrencyapp.domain.util.DomainMapper
+import com.vladiyak.cryptocurrencyapp.utils.DomainMapper
 
 class CoinDetailDtoMapper : DomainMapper<CoinDetailDto, CoinDetail> {
 

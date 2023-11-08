@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.databinding.TrendingCoinsItemBinding
+import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerTrendingItem
 
 

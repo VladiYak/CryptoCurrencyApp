@@ -43,13 +43,10 @@ class NewsFragment : Fragment(), INewsRVAdapter {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //initializing navController
         navController = Navigation.findNavController(view)
 
-        //initializing recyclerView
         setUpRecyclerView()
 
-        //initializing viewModel
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
         viewModel.getNews()

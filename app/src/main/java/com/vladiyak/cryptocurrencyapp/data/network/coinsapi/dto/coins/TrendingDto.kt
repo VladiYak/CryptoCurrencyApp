@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 
-data class Trending(
-    val coins: List<TrendingCoin>
+data class TrendingDto(
+    val coins: List<TrendingCoinDto>
 )

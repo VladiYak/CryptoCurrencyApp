@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.presentation.search
 
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinSearchResponse
 
 data class SearchUiState(
     val list: List<CoinSearchResponse> = emptyList(),

@@ -2,9 +2,9 @@ package com.vladiyak.cryptocurrencyapp.data.network.coinsapi
 
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.Trending
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChartDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
 import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -23,7 +23,7 @@ interface CoinGeckoApiService {
     ): List<CoinItemDto>
 
     @GET(ConstantsNew.TRENDING_URL)
-    suspend fun getTrendingCoins(): Trending
+    suspend fun getTrendingCoins(): TrendingDto
 
 
     @GET(ConstantsNew.MARKET_CHARTS)
@@ -31,7 +31,7 @@ interface CoinGeckoApiService {
         @Path("id") id: String,
         @Query("vs_currency") vsCurrency: String = "usd",
         @Query("days") days: String = "7",
-    ): CoinMarketChart
+    ): CoinMarketChartDto
 
     @GET(ConstantsNew.COIN_DETAIL)
     suspend fun getCoinDetail(
@@ -41,6 +41,6 @@ interface CoinGeckoApiService {
     @GET(ConstantsNew.SEARCH)
     suspend fun search(
         @Query("query") query: String
-    ): Search
+    ): SearchDto
 
 }

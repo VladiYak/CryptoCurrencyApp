@@ -3,6 +3,9 @@ package com.vladiyak.cryptocurrencyapp.di
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.CoinGeckoApiService
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinDetailDtoMapper
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinItemDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinMarketChartDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.SearchDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.TrendingDtoMapper
 import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
 import dagger.Module
 import dagger.Provides
@@ -51,5 +54,23 @@ object CoinGeckoModule {
     @Provides
     fun provideCoinItemDtoMapper(): CoinItemDtoMapper {
         return CoinItemDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCoinMarketChartDtoMapper(): CoinMarketChartDtoMapper {
+        return CoinMarketChartDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideTrendingCoinDtoMapper(): TrendingDtoMapper {
+        return TrendingDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchDtoMapper(): SearchDtoMapper {
+        return SearchDtoMapper()
     }
 }

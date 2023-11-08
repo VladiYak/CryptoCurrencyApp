@@ -13,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.vladiyak.cryptocurrencyapp.MainActivity
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentHomeBinding
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
+import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.presentation.home.adapters.CoinsRecyclerAdapter
 import com.vladiyak.cryptocurrencyapp.presentation.home.adapters.TrendingCoinsAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListener

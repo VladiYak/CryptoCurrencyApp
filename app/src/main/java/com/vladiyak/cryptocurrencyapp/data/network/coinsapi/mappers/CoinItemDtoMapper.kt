@@ -1,36 +1,10 @@
 package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers
 
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.AthDateDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.AthDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.AtlDateDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.AtlDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinImageDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CurrentPriceDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.DescriptionDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.High24hDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.Low24hDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.MarketCapDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.MarketDataDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.SparklineIn7dDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TotalVolumeDto
-import com.vladiyak.cryptocurrencyapp.domain.models.Ath
-import com.vladiyak.cryptocurrencyapp.domain.models.AthDate
-import com.vladiyak.cryptocurrencyapp.domain.models.Atl
-import com.vladiyak.cryptocurrencyapp.domain.models.AtlDate
-import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
-import com.vladiyak.cryptocurrencyapp.domain.models.CoinImage
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
-import com.vladiyak.cryptocurrencyapp.domain.models.CurrentPrice
-import com.vladiyak.cryptocurrencyapp.domain.models.Description
-import com.vladiyak.cryptocurrencyapp.domain.models.High24h
-import com.vladiyak.cryptocurrencyapp.domain.models.Low24h
-import com.vladiyak.cryptocurrencyapp.domain.models.MarketCap
-import com.vladiyak.cryptocurrencyapp.domain.models.MarketData
 import com.vladiyak.cryptocurrencyapp.domain.models.SparklineIn7d
-import com.vladiyak.cryptocurrencyapp.domain.models.TotalVolume
-import com.vladiyak.cryptocurrencyapp.domain.util.DomainMapper
+import com.vladiyak.cryptocurrencyapp.utils.DomainMapper
 
 class CoinItemDtoMapper : DomainMapper<CoinItemDto, CoinItem> {
 

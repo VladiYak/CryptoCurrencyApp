@@ -2,7 +2,7 @@ package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import com.google.gson.annotations.SerializedName
 
-data class CoinMarketChart(
+data class CoinMarketChartDto(
     val prices: List<List<Double>>,
 
     @SerializedName("market_caps")

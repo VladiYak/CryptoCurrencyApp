@@ -3,9 +3,7 @@ package com.vladiyak.cryptocurrencyapp.di
 import android.content.Context
 import androidx.room.Room
 import com.vladiyak.cryptocurrencyapp.data.local.AppDatabase
-import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntityMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinDetailDtoMapper
-import com.vladiyak.cryptocurrencyapp.utils.Constants.DATABASE_NAME
+import com.vladiyak.cryptocurrencyapp.data.local.mappers.FavoriteEntityMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

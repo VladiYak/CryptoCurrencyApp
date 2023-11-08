@@ -2,7 +2,7 @@ package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import com.google.gson.annotations.SerializedName
 
-data class TrendingCoinItem(
+data class TrendingCoinItemDto(
     val id: String,
     @SerializedName("coin_id")
     val coinId: Int,

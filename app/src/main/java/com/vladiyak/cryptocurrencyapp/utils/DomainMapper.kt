@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.domain.util
+package com.vladiyak.cryptocurrencyapp.utils
 
 interface DomainMapper <T, DomainModel>{
 
