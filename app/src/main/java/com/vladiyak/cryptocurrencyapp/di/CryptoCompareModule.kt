@@ -1,7 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.di
 
-import com.vladiyak.cryptocurrencyapp.data.api.CryptoCompareAPI
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.ApiService
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.CryptoCompareAPI
 import com.vladiyak.cryptocurrencyapp.utils.Constants
 import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
 import dagger.Module
@@ -12,11 +11,9 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import java.util.concurrent.TimeUnit
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 

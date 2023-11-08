@@ -1,9 +1,8 @@
-package com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search
+package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.io.Serializable
 
 
 @Parcelize

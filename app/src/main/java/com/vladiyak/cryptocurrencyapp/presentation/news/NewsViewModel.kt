@@ -3,8 +3,7 @@ package com.vladiyak.cryptocurrencyapp.presentation.news
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vladiyak.cryptocurrencyapp.data.repositories.CryptoCompareRepositoryImpl
-import com.vladiyak.cryptocurrencyapp.domain.model.NewsData
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
 import com.vladiyak.cryptocurrencyapp.domain.repository.CryptoCompareRepository
 import com.vladiyak.cryptocurrencyapp.utils.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel

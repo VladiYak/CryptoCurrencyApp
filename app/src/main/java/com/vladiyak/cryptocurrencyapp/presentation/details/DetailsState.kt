@@ -1,8 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.presentation.details
 
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.MarketData
-import com.vladiyak.cryptocurrencyapp.domain.model.CoinChartTimeSpan
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
+import com.vladiyak.cryptocurrencyapp.utils.CoinChartTimeSpan
 
 data class DetailState(
     val priceList: List<List<Double>> = emptyList(),

@@ -3,7 +3,7 @@ package com.vladiyak.cryptocurrencyapp.presentation.home.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinItem
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListener
 
 class CoinsRecyclerAdapter(

@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins
+package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import com.google.gson.annotations.SerializedName
 

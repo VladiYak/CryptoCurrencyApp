@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,14 +16,14 @@ class FavoriteViewModel @Inject constructor(
     private val coinRepository: CoinRepository
 ): ViewModel() {
 
-    private var _allFavouriteCoin: MutableLiveData<List<FavouriteEntity>> =
-        MutableLiveData<List<FavouriteEntity>>()
-    val allFavouriteCoin: LiveData<List<FavouriteEntity>> = _allFavouriteCoin
+    private var _allFavouriteCoin: MutableLiveData<List<FavoriteCoin>> =
+        MutableLiveData<List<FavoriteCoin>>()
+    val allFavouriteCoin: LiveData<List<FavoriteCoin>> = _allFavouriteCoin
 
 
-    fun addToFavourites(favouriteEntity: FavouriteEntity) {
+    fun addToFavourites(favoriteCoin: FavoriteCoin) {
         viewModelScope.launch(Dispatchers.IO) {
-            coinRepository.addFavourite(favouriteEntity)
+            coinRepository.addFavourite(favoriteCoin)
         }
     }
 
@@ -33,9 +33,9 @@ class FavoriteViewModel @Inject constructor(
         }
     }
 
-    fun removeCoinFromFavourite(entity: FavouriteEntity) {
+    fun removeCoinFromFavourite(favoriteCoin: FavoriteCoin) {
         viewModelScope.launch(Dispatchers.IO) {
-            coinRepository.delFavourite(entity)
+            coinRepository.deleteFavourite(favoriteCoin)
         }
     }
     init {

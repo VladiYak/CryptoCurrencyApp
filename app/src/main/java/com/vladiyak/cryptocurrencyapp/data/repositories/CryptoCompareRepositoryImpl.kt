@@ -1,7 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.data.repositories
 
-import com.vladiyak.cryptocurrencyapp.data.api.CryptoCompareAPI
-import com.vladiyak.cryptocurrencyapp.domain.model.NewsData
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.CryptoCompareAPI
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
 import com.vladiyak.cryptocurrencyapp.domain.repository.CryptoCompareRepository
 import javax.inject.Inject
 

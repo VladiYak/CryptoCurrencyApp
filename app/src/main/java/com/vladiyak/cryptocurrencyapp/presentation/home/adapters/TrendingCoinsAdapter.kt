@@ -3,7 +3,7 @@ package com.vladiyak.cryptocurrencyapp.presentation.home.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.TrendingCoin
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerTrendingItem
 
 

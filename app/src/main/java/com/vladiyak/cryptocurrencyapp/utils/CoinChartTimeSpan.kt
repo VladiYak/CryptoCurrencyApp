@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.domain.model
+package com.vladiyak.cryptocurrencyapp.utils
 
 enum class CoinChartTimeSpan(val value: String) {
     TIMESPAN_1DAYS("1"),

@@ -1,7 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.utils
 
 
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.CoinSearchResponse
 
 interface OnClickListenerSearchItem {
 

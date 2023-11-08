@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.domain.repository
 
-import com.vladiyak.cryptocurrencyapp.domain.model.NewsData
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
 
 interface CryptoCompareRepository {
 

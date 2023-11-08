@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.CoinSearchResponse
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentSearchBinding
 import com.vladiyak.cryptocurrencyapp.presentation.search.adapter.SearchRecyclerAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem

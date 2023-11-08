@@ -1,19 +1,16 @@
-package com.vladiyak.cryptocurrencyapp.data.api.newapi
+package com.vladiyak.cryptocurrencyapp.data.network.coinsapi
 
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinItem
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.Trending
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.detail.CoinChartResponse
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.markets.Exchange
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChart
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.Trending
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.Search
 import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface ApiService {
+interface CoinGeckoApiService {
 
     @GET(ConstantsNew.COIN_LIST_URL)
     suspend fun getCoinList(
@@ -23,16 +20,11 @@ interface ApiService {
         @Query("order") order: String = "market_cap_desc",
         @Query("sparkline") includeSparkline7dData: Boolean = true,
         @Query("price_change_percentage") priceChangePercentageIntervals: String = "7d",
-    ): List<CoinItem>
+    ): List<CoinItemDto>
 
     @GET(ConstantsNew.TRENDING_URL)
     suspend fun getTrendingCoins(): Trending
 
-    @GET(ConstantsNew.MARKETS_URL)
-    suspend fun getMarketList(
-        @Query("page") page: Int = 1,
-        @Query("per_page") perPage: Int = 50
-    ): List<Exchange>
 
     @GET(ConstantsNew.MARKET_CHARTS)
     suspend fun getMarketCharts(
@@ -44,17 +36,11 @@ interface ApiService {
     @GET(ConstantsNew.COIN_DETAIL)
     suspend fun getCoinDetail(
         @Path("id") id: String
-    ): CoinDetail
+    ): CoinDetailDto
 
     @GET(ConstantsNew.SEARCH)
     suspend fun search(
         @Query("query") query: String
     ): Search
 
-    @GET("coins/{id}/market_chart")
-    suspend fun getCoinChartData(
-        @Path("id") id: String,
-        @Query("vs_currency") currency: String,
-        @Query("days") period: String
-    ): Response<CoinChartResponse>
 }

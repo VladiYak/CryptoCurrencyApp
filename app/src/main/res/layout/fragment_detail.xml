@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="coin"
-            type="com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail" />
+            type="com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

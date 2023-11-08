@@ -3,7 +3,7 @@ package com.vladiyak.cryptocurrencyapp.presentation.search.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.CoinSearchResponse
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerSearchItem
 
 class SearchRecyclerAdapter(

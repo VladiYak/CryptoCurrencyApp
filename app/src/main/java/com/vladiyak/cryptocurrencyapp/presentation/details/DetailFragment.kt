@@ -19,11 +19,12 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.material.snackbar.Snackbar
-import com.vladiyak.cryptocurrencyapp.R
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.MainActivity
+import com.vladiyak.cryptocurrencyapp.R
+import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
+import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.presentation.favorite.FavoriteViewModel
 import com.vladiyak.cryptocurrencyapp.utils.CustomMarkerView
 import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
@@ -312,7 +313,7 @@ class DetailFragment : Fragment() {
 
     private fun favouriteListener(data: CoinDetail) {
         // Creating Favourite Entity
-        val element = FavouriteEntity(
+        val element = FavoriteCoin(
             data.id,
             data.name,
             data.symbol,

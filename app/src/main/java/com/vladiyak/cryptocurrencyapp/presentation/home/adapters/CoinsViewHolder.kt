@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.vladiyak.cryptocurrencyapp.R
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinItem
 import com.vladiyak.cryptocurrencyapp.databinding.CoinListItemBinding
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListener
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
-import java.util.*
+import java.util.Locale
 
 class CoinsViewHolder(
     val binding: CoinListItemBinding

@@ -11,8 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentFavoriteBinding
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
-import com.vladiyak.cryptocurrencyapp.presentation.favorite.adapters.FavouriteHomeAdapter
+import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
+import com.vladiyak.cryptocurrencyapp.presentation.favorite.adapters.FavouriteAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,7 @@ class FavoriteFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentFavoriteBinding == null")
 
     private val viewModel: FavoriteViewModel by viewModels()
-    private lateinit var favoritesAdapter: FavouriteHomeAdapter
+    private lateinit var favoritesAdapter: FavouriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,9 +62,9 @@ class FavoriteFragment : Fragment() {
             } else {
                 binding.nothingUi.visibility = View.INVISIBLE
             }
-            favoritesAdapter = FavouriteHomeAdapter(onClickListener = object :
+            favoritesAdapter = FavouriteAdapter(onClickListener = object :
                 OnClickListenerFavouriteItem {
-                override fun onItemClick(favCoin: FavouriteEntity) {
+                override fun onItemClick(favCoin: FavoriteCoin) {
                     val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment2(
                         favCoin.coinId
                     )

@@ -1,8 +1,8 @@
-package com.vladiyak.cryptocurrencyapp.domain.model.responses
+package com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.vladiyak.cryptocurrencyapp.domain.model.NewsData
+import com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto.NewsData
 
 @JsonClass(generateAdapter = true)
 data class NewsResponse(

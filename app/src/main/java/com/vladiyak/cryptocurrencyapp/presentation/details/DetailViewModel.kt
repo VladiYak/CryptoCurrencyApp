@@ -1,18 +1,12 @@
 package com.vladiyak.cryptocurrencyapp.presentation.details
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
-import com.vladiyak.cryptocurrencyapp.domain.model.CoinChartTimeSpan
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.utils.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn

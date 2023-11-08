@@ -7,7 +7,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FavoriteRvItemBinding
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
 import com.vladiyak.cryptocurrencyapp.utils.addSuffix
@@ -16,7 +16,7 @@ import java.util.Locale
 class FavouriteViewHolder(
     val binding: FavoriteRvItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: FavouriteEntity, onClickListener: OnClickListenerFavouriteItem) {
+    fun bind(item: FavoriteCoin, onClickListener: OnClickListenerFavouriteItem) {
         binding.apply {
             itemLayoutId.setOnClickListener {
                 onClickListener.onItemClick(item)

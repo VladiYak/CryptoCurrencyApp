@@ -1,36 +1,36 @@
-package com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins
+package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import com.google.gson.annotations.SerializedName
 
-data class CoinDetail(
+data class CoinDetailDto(
     val id: String = "",
     val name: String = "",
     val symbol: String = "",
     val categories: List<String>? = null,
-    val description: Description? = null,
-    val image: CoinImage? = null,
+    val description: DescriptionDto? = null,
+    val image: CoinImageDto? = null,
     @SerializedName("market_data")
-    val marketData: MarketData? = null
+    val marketData: MarketDataDto? = null
 )
 
-data class Description(
+data class DescriptionDto(
     @SerializedName("en")
     val descriptionEN: String
 )
 
-data class CoinImage(
+data class CoinImageDto(
     val large: String
 )
 
-data class MarketData(
+data class MarketDataDto(
     @SerializedName("current_price")
-    val currentPrice: CurrentPrice,
+    val currentPrice: CurrentPriceDto,
 
     @SerializedName("high_24h")
-    val high24h: High24h,
+    val high24h: High24hDto,
 
     @SerializedName("low_24h")
-    val low24h: Low24h,
+    val low24h: Low24hDto,
 
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Double = 0.0,
@@ -51,7 +51,7 @@ data class MarketData(
     val priceChangePercentage365d: Double = 0.0,
 
     @SerializedName("market_cap")
-    val marketCap: MarketCap,
+    val marketCap: MarketCapDto,
 
     @SerializedName("total_supply")
     val totalSupply: Double? = 0.0,
@@ -60,56 +60,56 @@ data class MarketData(
     val circulatingSupply: Double? = 0.0,
 
     @SerializedName("total_volume")
-    val totalVolume: TotalVolume,
+    val totalVolume: TotalVolumeDto,
 
     @SerializedName("ath")
-    val ath: Ath,
+    val ath: AthDto,
 
     @SerializedName("atl")
-    val atl: Atl,
+    val atl: AtlDto,
 
     @SerializedName("ath_date")
-    val athDate: AthDate,
+    val athDate: AthDateDto,
 
     @SerializedName("atl_date")
-    val atlDate: AthDate,
+    val atlDate: AtlDateDto,
 
 
 
     )
 
-data class CurrentPrice(
+data class CurrentPriceDto(
     val usd: Double
 )
 
-data class High24h(
+data class High24hDto(
     val usd: Double
 )
 
-data class Low24h(
+data class Low24hDto(
     val usd: Double
 )
 
-data class MarketCap(
+data class MarketCapDto(
     val usd: Double
 )
 
-data class TotalVolume(
+data class TotalVolumeDto(
     val usd: Double
 )
 
-data class Ath(
+data class AthDto(
     val usd: Double
 )
 
-data class Atl(
+data class AtlDto(
     val usd: Double
 )
 
-data class AthDate(
+data class AthDateDto(
     val usd: String
 )
 
-data class AtlDate(
+data class AtlDateDto(
     val usd: String
 )

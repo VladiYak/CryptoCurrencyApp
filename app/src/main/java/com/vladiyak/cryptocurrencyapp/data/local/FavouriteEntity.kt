@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.domain.model
+package com.vladiyak.cryptocurrencyapp.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

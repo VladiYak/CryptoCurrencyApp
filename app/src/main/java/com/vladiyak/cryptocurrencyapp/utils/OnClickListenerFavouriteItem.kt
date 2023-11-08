@@ -1,8 +1,8 @@
 package com.vladiyak.cryptocurrencyapp.utils
 
-import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 
 interface OnClickListenerFavouriteItem {
-    fun onItemClick(favCoin: FavouriteEntity)
+    fun onItemClick(favCoin: FavoriteCoin)
 
 }

@@ -1,4 +1,4 @@
-package com.vladiyak.cryptocurrencyapp.domain.model
+package com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
