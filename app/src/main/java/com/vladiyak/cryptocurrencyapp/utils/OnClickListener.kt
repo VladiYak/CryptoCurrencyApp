@@ -1,8 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.utils
 
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinItem
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.CoinSearchResponse
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinItem
 
 interface OnClickListener {
     fun onItemClick(coin: CoinItem)

@@ -1,14 +1,14 @@
 package com.vladiyak.cryptocurrencyapp.domain.repository
 
 
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinItem
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.detail.CoinChartResponse
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.markets.Exchange
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.Search
-import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinItem
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinMarketChart
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.TrendingCoin
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.detail.CoinChartResponse
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.markets.Exchange
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response

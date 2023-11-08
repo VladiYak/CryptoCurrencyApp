@@ -2,7 +2,9 @@ package com.vladiyak.cryptocurrencyapp.di
 
 
 import com.vladiyak.cryptocurrencyapp.data.repositories.CoinRepositoryImpl
+import com.vladiyak.cryptocurrencyapp.data.repositories.CryptoCompareRepositoryImpl
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
+import com.vladiyak.cryptocurrencyapp.domain.repository.CryptoCompareRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,4 +18,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindCoinRepository(coinRepositoryImpl: CoinRepositoryImpl): CoinRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCryptoCompareRepository(cryptoCompareRepositoryImpl: CryptoCompareRepositoryImpl): CryptoCompareRepository
 }

@@ -1,7 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.data.local
 
 import androidx.room.*
-import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
 
 @Dao
 interface FavouriteDao {

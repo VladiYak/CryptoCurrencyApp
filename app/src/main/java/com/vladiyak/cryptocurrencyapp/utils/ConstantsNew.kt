@@ -1,7 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.utils
 
 object ConstantsNew {
-    const val BASE_URL = "https://api.coingecko.com/api/v3/"
+    const val BASE_URL_COIN_GECKO = "https://api.coingecko.com/api/v3/"
 
     const val COIN_LIST_URL = "coins/markets"
 
@@ -14,4 +14,7 @@ object ConstantsNew {
     const val COIN_DETAIL = "coins/{id}"
 
     const val SEARCH = "search"
+
+    const val BASE_URL_CRYPTO_COMPARE = "https://min-api.cryptocompare.com/data/v2/"
+
 }

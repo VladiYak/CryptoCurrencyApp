@@ -1,16 +1,16 @@
 package com.vladiyak.cryptocurrencyapp.data.repositories
 
 
-import com.vladiyak.cryptocurrencyapp.api.newapi.ApiService
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinMarketChart
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.detail.CoinChartResponse
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.markets.Exchange
-import com.vladiyak.cryptocurrencyapp.api.newapi.dto.search.Search
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.ApiService
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinMarketChart
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.TrendingCoin
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.detail.CoinChartResponse
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.markets.Exchange
+import com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.search.Search
 import com.vladiyak.cryptocurrencyapp.data.local.FavouriteDao
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
-import com.vladiyak.cryptocurrencyapp.model.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.domain.model.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -7,7 +7,7 @@
 
         <variable
             name="coin"
-            type="com.vladiyak.cryptocurrencyapp.api.newapi.dto.coins.CoinDetail" />
+            type="com.vladiyak.cryptocurrencyapp.data.api.newapi.dto.coins.CoinDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

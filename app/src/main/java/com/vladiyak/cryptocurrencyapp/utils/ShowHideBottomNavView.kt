@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.utils
 
-import com.vladiyak.cryptocurrencyapp.activities.MainActivity
+import com.vladiyak.cryptocurrencyapp.MainActivity
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
