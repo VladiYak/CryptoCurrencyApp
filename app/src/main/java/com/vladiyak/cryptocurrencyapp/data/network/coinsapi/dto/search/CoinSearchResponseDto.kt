@@ -2,6 +2,7 @@ package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinSearchResponse
 import kotlinx.parcelize.Parcelize
 
 
@@ -15,3 +16,13 @@ data class CoinSearchResponseDto(
     @SerializedName("large")
     val imageUrl: String,
 ) : Parcelable
+
+fun CoinSearchResponseDto.toCoinSearchResponse(): CoinSearchResponse {
+    return CoinSearchResponse(
+        id = id,
+        name = name,
+        symbol = symbol,
+        marketCapRank = marketCapRank,
+        imageUrl = imageUrl
+    )
+}

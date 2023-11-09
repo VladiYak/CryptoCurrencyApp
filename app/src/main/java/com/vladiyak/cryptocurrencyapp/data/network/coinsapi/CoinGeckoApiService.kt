@@ -5,14 +5,14 @@ import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDt
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChartDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
-import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
+import com.vladiyak.cryptocurrencyapp.utils.Constants
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CoinGeckoApiService {
 
-    @GET(ConstantsNew.COIN_LIST_URL)
+    @GET(Constants.COIN_LIST_URL)
     suspend fun getCoinList(
         @Query("vs_currency") currency: String = "usd",
         @Query("page") page: Int = 1,
@@ -22,23 +22,23 @@ interface CoinGeckoApiService {
         @Query("price_change_percentage") priceChangePercentageIntervals: String = "7d",
     ): List<CoinItemDto>
 
-    @GET(ConstantsNew.TRENDING_URL)
+    @GET(Constants.TRENDING_URL)
     suspend fun getTrendingCoins(): TrendingDto
 
 
-    @GET(ConstantsNew.MARKET_CHARTS)
+    @GET(Constants.MARKET_CHARTS)
     suspend fun getMarketCharts(
         @Path("id") id: String,
         @Query("vs_currency") vsCurrency: String = "usd",
         @Query("days") days: String = "7",
     ): CoinMarketChartDto
 
-    @GET(ConstantsNew.COIN_DETAIL)
+    @GET(Constants.COIN_DETAIL)
     suspend fun getCoinDetail(
         @Path("id") id: String
     ): CoinDetailDto
 
-    @GET(ConstantsNew.SEARCH)
+    @GET(Constants.SEARCH)
     suspend fun search(
         @Query("query") query: String
     ): SearchDto

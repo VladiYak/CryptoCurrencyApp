@@ -1,6 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import com.google.gson.annotations.SerializedName
+import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoinItem
 
 data class TrendingCoinItemDto(
     val id: String,
@@ -18,3 +19,19 @@ data class TrendingCoinItemDto(
     val priceBtc: Double,
     val score: Int
 )
+
+fun TrendingCoinItemDto.toTrendingCoinItem(): TrendingCoinItem {
+    return TrendingCoinItem(
+        id = id,
+        coinId = coinId,
+        name = name,
+        symbol = symbol,
+        marketCapRank = marketCapRank,
+        thumb = thumb,
+        small = small,
+        large = large,
+        slug = slug,
+        priceBtc = priceBtc,
+        score = score
+    )
+}

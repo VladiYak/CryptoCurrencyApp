@@ -2,6 +2,8 @@ package com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
+import com.vladiyak.cryptocurrencyapp.domain.models.SparklineIn7d
 import kotlinx.parcelize.Parcelize
 
 
@@ -51,7 +53,6 @@ data class CoinItemDto(
     val atlChangePercentage: Double = 0.0,
     @SerializedName("atl_date")
     val atlDate: String? = null,
-    val roi: RoiDto? = null,
     @SerializedName("last_updated")
     val lastUpdated: String? = null,
     @SerializedName("price_change_percentage_1h_in_currency")
@@ -65,3 +66,42 @@ data class CoinItemDto(
 data class SparklineIn7dDto(
     val price: List<Double>? = null
 ) : Parcelable
+
+
+fun CoinItemDto.toCoinItem(): CoinItem {
+    return CoinItem(
+        id = id,
+        name = name,
+        symbol = symbol,
+        image = image,
+        currentPrice = currentPrice,
+        marketCap = marketCap,
+        marketCapRank = marketCapRank,
+        fullyDilutedValuation = fullyDilutedValuation,
+        totalVolume = totalVolume,
+        high24h = high24h,
+        low24h = low24h,
+        priceChange24h = priceChange24h,
+        priceChangePercentage24h = priceChangePercentage24h,
+        priceChangePercentage7dInCurrency = priceChangePercentage7dInCurrency,
+        marketCapChange24h = marketCapChange24h,
+        marketCapChangePercentage24h = marketCapChangePercentage24h,
+        circulatingSupply = circulatingSupply,
+        totalSupply = totalSupply,
+        ath = ath,
+        athChangePercentage = athChangePercentage,
+        athDate = athDate,
+        atl = atl,
+        atlChangePercentage = atlChangePercentage,
+        atlDate = atlDate,
+        lastUpdated = lastUpdated,
+        priceChangePercentage1hInCurrency = priceChangePercentage1hInCurrency,
+        sparklineIn7d = sparklineIn7d?.toSparklineIn7d()
+    )
+}
+
+fun SparklineIn7dDto.toSparklineIn7d(): SparklineIn7d {
+    return SparklineIn7d(
+        price = price
+    )
+}

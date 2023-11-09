@@ -1,9 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.di
 
 import com.vladiyak.cryptocurrencyapp.data.network.newsapi.CryptoCompareApiService
-import com.vladiyak.cryptocurrencyapp.data.network.newsapi.mappers.NewsResponseDtoMapper
 import com.vladiyak.cryptocurrencyapp.utils.Constants
-import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +24,7 @@ object CryptoCompareModule {
     @Singleton
     fun provideApiService(@OkHttpCryptoCompare okHttpClient: OkHttpClient): CryptoCompareApiService {
         return Retrofit.Builder()
-            .baseUrl(ConstantsNew.BASE_URL_CRYPTO_COMPARE)
+            .baseUrl(Constants.BASE_URL_CRYPTO_COMPARE)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -53,10 +51,4 @@ object CryptoCompareModule {
             .url(chain.request().url.newBuilder().addQueryParameter("api_key", Constants.ApiKey).build())
             .build()
     )
-
-    @Singleton
-    @Provides
-    fun provideNewsResponseDtoMapper(): NewsResponseDtoMapper {
-        return NewsResponseDtoMapper()
-    }
 }

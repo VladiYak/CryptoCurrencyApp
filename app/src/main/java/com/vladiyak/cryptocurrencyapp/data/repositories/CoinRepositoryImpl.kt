@@ -1,8 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.data.repositories
 
 
-import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntity
-import com.vladiyak.cryptocurrencyapp.data.local.mappers.FavoriteEntityMapper
+import com.vladiyak.cryptocurrencyapp.data.local.entities.FavoriteEntity
 import com.vladiyak.cryptocurrencyapp.data.local.FavouriteDao
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.CoinGeckoApiService
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
@@ -10,11 +9,6 @@ import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDt
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChartDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoinDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinDetailDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinItemDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinMarketChartDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.SearchDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.TrendingDtoMapper
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import javax.inject.Inject
 

@@ -2,6 +2,7 @@ package com.vladiyak.cryptocurrencyapp.data.network.newsapi.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import com.vladiyak.cryptocurrencyapp.domain.models.NewsData
 
 
 @JsonClass(generateAdapter = true)
@@ -35,3 +36,22 @@ data class NewsDataDto(
     @Json(name = "url")
     val url: String?
 )
+
+fun NewsDataDto.toNewsData(): NewsData {
+    return NewsData(
+        body = body,
+        categories = categories,
+        downvotes = downvotes,
+        guid = guid,
+        id = id,
+        imageurl = imageurl,
+        lang = lang,
+        publishedOn = publishedOn,
+        source = source,
+        sourceInfo = sourceInfo?.toSourceInfo(),
+        tags = tags,
+        title = title,
+        upvotes = upvotes,
+        url = url
+    )
+}

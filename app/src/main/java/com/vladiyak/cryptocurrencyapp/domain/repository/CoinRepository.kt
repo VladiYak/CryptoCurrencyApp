@@ -1,13 +1,12 @@
 package com.vladiyak.cryptocurrencyapp.domain.repository
 
 
-import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntity
+import com.vladiyak.cryptocurrencyapp.data.local.entities.FavoriteEntity
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChartDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoinDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
-import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 
 interface CoinRepository {
 

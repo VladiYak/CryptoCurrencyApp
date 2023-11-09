@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.domain.usecases.impl
 
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.TrendingDtoMapper
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.toTrendingCoin
 import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetTrendingCoinsUseCase
@@ -11,14 +11,13 @@ import javax.inject.Inject
 
 class GetTrendingCoinsUseCaseImpl @Inject constructor(
     private val repository: CoinRepository,
-    private val trendingDtoMapper: TrendingDtoMapper
 ): GetTrendingCoinsUseCase {
 
     override operator fun invoke(): Flow<Resource<List<TrendingCoin>>> = flow {
         emit(Resource.Loading())
         try {
             val coins = repository.getTrendingCoins()
-            emit(Resource.Success(data = trendingDtoMapper.mapCoins(coins)))
+            emit(Resource.Success(data = coins.map { it.toTrendingCoin() }))
         } catch (e: Exception) {
             emit(Resource.Error(message = e.localizedMessage ?: "An error occurred!"))
         }

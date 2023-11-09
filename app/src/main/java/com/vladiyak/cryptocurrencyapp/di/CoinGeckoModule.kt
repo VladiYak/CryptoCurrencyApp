@@ -1,12 +1,7 @@
 package com.vladiyak.cryptocurrencyapp.di
 
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.CoinGeckoApiService
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinDetailDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinItemDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.CoinMarketChartDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.SearchDtoMapper
-import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.mappers.TrendingDtoMapper
-import com.vladiyak.cryptocurrencyapp.utils.ConstantsNew
+import com.vladiyak.cryptocurrencyapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +21,7 @@ object CoinGeckoModule {
     @Singleton
     fun provideApiService(@OkHttpCoinGecko okHttpClient: OkHttpClient): CoinGeckoApiService {
         return Retrofit.Builder()
-            .baseUrl(ConstantsNew.BASE_URL_COIN_GECKO)
+            .baseUrl(Constants.BASE_URL_COIN_GECKO)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -42,35 +37,5 @@ object CoinGeckoModule {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideCoinDetailDtoMapper(): CoinDetailDtoMapper {
-        return CoinDetailDtoMapper()
-    }
-
-    @Singleton
-    @Provides
-    fun provideCoinItemDtoMapper(): CoinItemDtoMapper {
-        return CoinItemDtoMapper()
-    }
-
-    @Singleton
-    @Provides
-    fun provideCoinMarketChartDtoMapper(): CoinMarketChartDtoMapper {
-        return CoinMarketChartDtoMapper()
-    }
-
-    @Singleton
-    @Provides
-    fun provideTrendingCoinDtoMapper(): TrendingDtoMapper {
-        return TrendingDtoMapper()
-    }
-
-    @Singleton
-    @Provides
-    fun provideSearchDtoMapper(): SearchDtoMapper {
-        return SearchDtoMapper()
     }
 }

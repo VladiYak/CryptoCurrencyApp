@@ -1,5 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.domain.models
 
+import com.vladiyak.cryptocurrencyapp.data.local.entities.FavoriteEntity
 
 
 data class FavoriteCoin(
@@ -10,4 +11,15 @@ data class FavoriteCoin(
     val coinImage: String?,
     val priceChangePercentage7d: Double?,
 )
+
+fun FavoriteCoin.toFavoriteEntity(): FavoriteEntity {
+    return FavoriteEntity(
+        coinId = coinId,
+        coinName = coinName,
+        symbol = symbol,
+        price = price,
+        coinImage = coinImage,
+        priceChangePercentage7d = priceChangePercentage7d
+    )
+}
 
