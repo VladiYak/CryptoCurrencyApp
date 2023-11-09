@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentFavoriteBinding
-import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.presentation.favorite.adapters.FavouriteAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerFavouriteItem

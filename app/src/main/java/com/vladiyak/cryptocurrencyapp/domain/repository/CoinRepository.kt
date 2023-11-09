@@ -1,31 +1,29 @@
 package com.vladiyak.cryptocurrencyapp.domain.repository
 
 
+import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntity
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinMarketChartDto
+import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.TrendingCoinDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.search.SearchDto
-import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
-import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
-import com.vladiyak.cryptocurrencyapp.domain.models.CoinMarketChart
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
-import com.vladiyak.cryptocurrencyapp.domain.models.Search
-import com.vladiyak.cryptocurrencyapp.domain.models.TrendingCoin
-import com.vladiyak.cryptocurrencyapp.utils.Resource
-import kotlinx.coroutines.flow.Flow
 
 interface CoinRepository {
 
-    fun getCoins(): Flow<Resource<List<CoinItem>>>
+    suspend fun getCoins(): List<CoinItemDto>
 
-    fun getTrendingCoins(): Flow<Resource<List<TrendingCoin>>>
+    suspend fun getTrendingCoins(): List<TrendingCoinDto>
 
-    fun getMarketChart(id: String, day: String): Flow<Resource<CoinMarketChart>>
+    suspend fun getMarketChart(id: String, day: String): CoinMarketChartDto
 
-    fun getCoinDetail(id: String): Flow<Resource<CoinDetail>>
+    suspend fun getCoinDetail(id: String): CoinDetailDto
 
-    fun search(query: String): Flow<Resource<Search>>
+    suspend fun search(query: String): SearchDto
 
-    fun getAllFavourite(): List<FavoriteCoin>
+    fun getAllFavorite(): List<FavoriteEntity>
 
-    suspend fun deleteFavourite(favoriteCoin: FavoriteCoin)
+    suspend fun deleteFavorite(favoriteEntity: FavoriteEntity)
 
-    suspend fun addFavourite(favoriteCoin: FavoriteCoin)
+    suspend fun addFavorite(favoriteEntity: FavoriteEntity)
 }

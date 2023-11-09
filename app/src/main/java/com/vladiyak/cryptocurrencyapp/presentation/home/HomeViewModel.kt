@@ -3,6 +3,8 @@ package com.vladiyak.cryptocurrencyapp.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
+import com.vladiyak.cryptocurrencyapp.domain.usecases.GetCoinsUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.GetTrendingCoinsUseCase
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: CoinRepository
+    private val getCoinsUseCase: GetCoinsUseCase,
+    private val getTrendingCoinsUseCase: GetTrendingCoinsUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CoinListUiState())
@@ -27,7 +30,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getCoins() {
-        repository.getCoins().onEach { result ->
+        getCoinsUseCase().onEach { result ->
             when(result){
                 is Resource.Success -> {
                     _state.update { it.copy(coinList = result.data ?: emptyList()) }
@@ -45,7 +48,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getTrendingCoins(){
-        repository.getTrendingCoins().onEach { result ->
+        getTrendingCoinsUseCase().onEach { result ->
             when(result){
                 is Resource.Success -> {
                     _state.update { it.copy(trendingCoinList = result.data ?: emptyList()) }

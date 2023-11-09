@@ -3,6 +3,8 @@ package com.vladiyak.cryptocurrencyapp.presentation.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
+import com.vladiyak.cryptocurrencyapp.domain.usecases.GetCoinDetailsUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.GetMarketChartUseCase
 import com.vladiyak.cryptocurrencyapp.utils.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val repository: CoinRepository
+    private val getMarketChartUseCase: GetMarketChartUseCase,
+    private val getCoinDetailsUseCase: GetCoinDetailsUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(DetailState())
@@ -29,7 +32,7 @@ class DetailViewModel @Inject constructor(
     fun getAllData(id: String) {
         getMarketChartJob?.cancel()
         getMarketChartJob =
-            repository.getMarketChart(id, state.value.timeRange.value).onEach { result ->
+            getMarketChartUseCase(id, state.value.timeRange.value).onEach { result ->
                 when (result) {
                     is Resource.Success -> {
                         _state.update { it.copy(priceList = result.data?.prices ?: emptyList()) }
@@ -48,7 +51,7 @@ class DetailViewModel @Inject constructor(
     }
 
     fun getCoinDetail(id: String) {
-        repository.getCoinDetail(id).onEach { result ->
+        getCoinDetailsUseCase(id).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.update {

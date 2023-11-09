@@ -1,11 +1,11 @@
 package com.vladiyak.cryptocurrencyapp.data.local.mappers
 
-import com.vladiyak.cryptocurrencyapp.data.local.FavouriteEntity
+import com.vladiyak.cryptocurrencyapp.data.local.FavoriteEntity
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.utils.DomainMapper
 
-class FavoriteEntityMapper : DomainMapper<FavouriteEntity, FavoriteCoin> {
-    override fun mapToDomainModel(model: FavouriteEntity): FavoriteCoin {
+class FavoriteEntityMapper : DomainMapper<FavoriteEntity, FavoriteCoin> {
+    override fun mapToDomainModel(model: FavoriteEntity): FavoriteCoin {
         return FavoriteCoin(
             coinId = model.coinId,
             coinName = model.coinName,
@@ -16,12 +16,12 @@ class FavoriteEntityMapper : DomainMapper<FavouriteEntity, FavoriteCoin> {
         )
     }
 
-    fun toDomainList(initial: List<FavouriteEntity>): List<FavoriteCoin>{
+    fun toDomainList(initial: List<FavoriteEntity>): List<FavoriteCoin>{
         return initial.map { mapToDomainModel(it) }
     }
 
-    override fun mapFromDomainModel(domainModel: FavoriteCoin): FavouriteEntity {
-        return FavouriteEntity(
+    override fun mapFromDomainModel(domainModel: FavoriteCoin): FavoriteEntity {
+        return FavoriteEntity(
             coinId = domainModel.coinId,
             coinName = domainModel.coinName,
             symbol = domainModel.symbol,

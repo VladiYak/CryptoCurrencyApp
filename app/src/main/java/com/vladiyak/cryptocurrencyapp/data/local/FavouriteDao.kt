@@ -6,11 +6,12 @@ import androidx.room.*
 interface FavouriteDao {
 
     @Query("SELECT * FROM Favourite_Table ORDER BY coinId ASC ")
-    fun getAllFavourite(): List<FavouriteEntity>
+    fun getAllFavorite(): List<FavoriteEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFavourite(data: FavouriteEntity)
+    suspend fun addFavorite(data: FavoriteEntity)
+
 
     @Delete
-    suspend fun deleteFavourite(data: FavouriteEntity)
+    suspend fun deleteFavorite(data: FavoriteEntity)
 }

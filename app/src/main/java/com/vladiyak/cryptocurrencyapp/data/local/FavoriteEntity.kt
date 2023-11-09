@@ -3,10 +3,9 @@ package com.vladiyak.cryptocurrencyapp.data.local
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "Favourite_Table")
-data class FavouriteEntity(
+data class FavoriteEntity(
     @PrimaryKey
     val coinId: String,
     @ColumnInfo(name = "coinName")
