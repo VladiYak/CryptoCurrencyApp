@@ -2,8 +2,8 @@ package com.vladiyak.cryptocurrencyapp.presentation.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.SearchUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.SearchUseCaseImpl
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

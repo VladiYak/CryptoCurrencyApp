@@ -2,9 +2,9 @@ package com.vladiyak.cryptocurrencyapp.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetCoinsUseCase
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetTrendingCoinsUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.GetTrendingCoinsUseCaseImpl
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

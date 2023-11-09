@@ -16,7 +16,7 @@ import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentNewsBinding
 import com.vladiyak.cryptocurrencyapp.presentation.news.adapter.INewsRVAdapter
 import com.vladiyak.cryptocurrencyapp.presentation.news.adapter.NewsRVAdapter
-import com.vladiyak.cryptocurrencyapp.utils.ApiResponse
+import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -53,23 +53,23 @@ class NewsFragment : Fragment(), INewsRVAdapter {
 
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
-                is ApiResponse.Success -> {
+                is Resource.Success -> {
                     _binding?.shimmerLayoutNews?.stopShimmer()
                     _binding?.shimmerLayoutNews?.visibility = View.GONE
                     _binding?.rvNews?.visibility = View.VISIBLE
                     newsAdapter.submitList(response.data)
                 }
-                is ApiResponse.Loading -> {
+                is Resource.Loading -> {
                     _binding?.shimmerLayoutNews?.visibility = View.VISIBLE
                     _binding?.shimmerLayoutNews?.startShimmer()
                 }
-                is ApiResponse.Error -> {
+                is Resource.Error -> {
                     _binding?.shimmerLayoutNews?.stopShimmer()
                     _binding?.shimmerLayoutNews?.visibility = View.GONE
                     Snackbar.make(view, "Could yes retrieve news, restart app!", Snackbar.LENGTH_SHORT).show()
                 }
             }
-            response.responseMessage
+            response.message
         })
     }
 

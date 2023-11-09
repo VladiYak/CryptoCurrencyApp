@@ -1,16 +1,8 @@
 package com.vladiyak.cryptocurrencyapp.domain.usecases
 
-import com.vladiyak.cryptocurrencyapp.data.local.mappers.FavoriteEntityMapper
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
-import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
-import javax.inject.Inject
 
-class AddFavoriteUseCase @Inject constructor(
-    private val repository: CoinRepository,
-    private val favoriteEntityMapper: FavoriteEntityMapper
-) {
+interface AddFavoriteUseCase {
 
-    suspend operator fun invoke(favoriteCoin: FavoriteCoin) {
-        repository.addFavorite(favoriteEntityMapper.mapFromDomainModel(favoriteCoin))
-    }
+    suspend operator fun invoke(favoriteCoin: FavoriteCoin)
 }

@@ -2,9 +2,10 @@ package com.vladiyak.cryptocurrencyapp.presentation.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetCoinDetailsUseCase
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetMarketChartUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.GetCoinDetailsUseCaseImpl
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.GetMarketChartUseCaseImpl
 import com.vladiyak.cryptocurrencyapp.utils.CoinChartTimeSpan
 import com.vladiyak.cryptocurrencyapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
-import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.AddFavoriteUseCase
 import com.vladiyak.cryptocurrencyapp.domain.usecases.DeleteFavoriteUseCase
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetAllFavoriteUseCase
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.AddFavoriteUseCaseImpl
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.DeleteFavoriteUseCaseImpl
+import com.vladiyak.cryptocurrencyapp.domain.usecases.impl.GetAllFavoriteUseCaseImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

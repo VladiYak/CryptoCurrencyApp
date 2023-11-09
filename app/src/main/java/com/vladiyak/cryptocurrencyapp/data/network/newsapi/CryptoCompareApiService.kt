@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface CryptoCompareApiService {
     @GET("news/")
-    suspend fun getLatestNews(): Response<NewsResponseDto>
+    suspend fun getLatestNews(): NewsResponseDto
 
 }
 
