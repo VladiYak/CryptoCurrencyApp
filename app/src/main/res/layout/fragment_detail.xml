@@ -148,7 +148,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:tint="@color/white"
-                            tools:src="@drawable/ic_arrow_drop_up" />
+                            tools:src="@drawable/ic_arrow_up_24" />
 
                         <TextView
                             android:id="@+id/txtPriceChange"
@@ -182,16 +182,17 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chip_group"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    app:singleLine="true"
-                    app:singleSelection="true"
-                    app:chipSpacingHorizontal="6dp"
-                    app:selectionRequired="true"
-                    app:checkedChip="@id/chip_7"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/lineChart">
+                    app:checkedChip="@id/chip_7"
+                    app:chipSpacingHorizontal="6dp"
+                    app:layout_constraintEnd_toEndOf="@+id/lineChart"
+                    app:layout_constraintStart_toStartOf="@+id/lineChart"
+                    app:layout_constraintTop_toBottomOf="@id/lineChart"
+                    app:selectionRequired="true"
+                    app:singleLine="true"
+                    app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_1"
@@ -205,7 +206,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/seven_day"/>
+                        android:text="@string/seven_day" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_14"
