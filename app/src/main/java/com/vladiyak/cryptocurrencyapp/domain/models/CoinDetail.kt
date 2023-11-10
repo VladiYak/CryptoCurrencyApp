@@ -75,3 +75,14 @@ data class AthDate(
 data class AtlDate(
     val usd: String
 )
+
+fun CoinDetail.toFavoriteCoin(): FavoriteCoin {
+    return FavoriteCoin(
+        coinId = id,
+        coinName = name,
+        symbol = symbol,
+        price = marketData?.currentPrice?.usd.toString(),
+        coinImage = image?.large,
+        priceChangePercentage7d = marketData?.priceChangePercentage7d
+    )
+}

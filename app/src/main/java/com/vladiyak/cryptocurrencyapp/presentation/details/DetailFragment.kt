@@ -24,6 +24,7 @@ import com.vladiyak.cryptocurrencyapp.R
 import com.vladiyak.cryptocurrencyapp.databinding.FragmentDetailBinding
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinDetail
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
+import com.vladiyak.cryptocurrencyapp.domain.models.toFavoriteCoin
 import com.vladiyak.cryptocurrencyapp.presentation.favorite.FavoriteViewModel
 import com.vladiyak.cryptocurrencyapp.utils.CustomMarkerView
 import com.vladiyak.cryptocurrencyapp.utils.XAxisValueFormatter
@@ -311,15 +312,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun favouriteListener(data: CoinDetail) {
-        // Creating Favourite Entity
-        val element = FavoriteCoin(
-            data.id,
-            data.name,
-            data.symbol,
-            data.marketData?.currentPrice?.usd.toString(),
-            data.image?.large,
-            data.marketData?.priceChangePercentage7d,
-        )
+        val element = data.toFavoriteCoin()
 
         if (binding.favtoggleButton.tag != "ON") {
             // Changing  the Image To Filled

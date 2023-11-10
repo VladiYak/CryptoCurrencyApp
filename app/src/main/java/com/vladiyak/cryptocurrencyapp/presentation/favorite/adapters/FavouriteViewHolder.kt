@@ -31,26 +31,22 @@ class FavouriteViewHolder(
                     transformations(CircleCropTransformation())
                 }
 
-                //Setting Name of Coin
                 tvCoinName.text = item.coinName
 
                 tvCoinSymbol.text = item.symbol.uppercase(Locale.ROOT)
 
-                //Setting Price of Coin
                 tvCoinPrice.text = item.price.toString().addPrefix("$")
 
-                tvPercentage.text = item.priceChangePercentage7d?.toString()?.addSuffix("%")
-
                 if ((item.priceChangePercentage7d ?: 0.0) > 0) {
+                    tvPercentage.text = item.priceChangePercentage7d?.toString()?.addPrefix("%")?.addSuffix("+")
                     binding.tvPercentage.setBackgroundResource(
                         R.drawable.background_corners_percent_increase
                     )
-//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_increase)
                 } else {
+                    tvPercentage.text = item.priceChangePercentage7d?.toString()?.addPrefix("%")
                     binding.tvPercentage.setBackgroundResource(
                         R.drawable.background_corners_percent_decrease
                     )
-//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
                 }
             }
         }

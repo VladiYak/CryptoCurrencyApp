@@ -11,6 +11,7 @@ import com.vladiyak.cryptocurrencyapp.databinding.CoinListItemBinding
 import com.vladiyak.cryptocurrencyapp.domain.models.CoinItem
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListener
 import com.vladiyak.cryptocurrencyapp.utils.addPrefix
+import com.vladiyak.cryptocurrencyapp.utils.addSuffix
 import java.util.Locale
 
 class CoinsViewHolder(
@@ -45,20 +46,19 @@ class CoinsViewHolder(
                 tvCoinSymbol.text = item.symbol.uppercase(Locale.ROOT)
                 tvCoinRank.text = item.marketCapRank.toString()
                 tvCoinPrice.text =
-                    item.currentPrice.toString().addPrefix("$") //custom string extensions
-                tvPercentage.text = String.format("%.2f", item.priceChangePercentage7dInCurrency).addPrefix("%")
+                    item.currentPrice.toString().addPrefix("$")
             }
 
             if (item.priceChangePercentage7dInCurrency > 0) {
+                tvPercentage.text = String.format("%.2f", item.priceChangePercentage7dInCurrency).addPrefix("%").addSuffix("+")
                 binding.tvPercentage.setBackgroundResource(
                     R.drawable.background_corners_percent_increase
                 )
-//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_increase)
             } else {
+                tvPercentage.text = String.format("%.2f", item.priceChangePercentage7dInCurrency).addPrefix("%")
                 binding.tvPercentage.setBackgroundResource(
                     R.drawable.background_corners_percent_decrease
                 )
-//                binding.itemLayoutId.setBackgroundResource(R.drawable.coins_item_bg_decrease)
             }
 
 
