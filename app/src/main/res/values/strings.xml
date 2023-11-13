@@ -37,6 +37,7 @@
     <string name="crypto_icon">crypto icon</string>
     <string name="trending_coin_icon">trending coin</string>
     <string name="powered_by">Powered by</string>
+    <string name="settings">Настройки</string>
 
 
 </resources>

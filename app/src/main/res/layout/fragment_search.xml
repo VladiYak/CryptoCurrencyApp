@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.search.SearchBar$ScrollingViewBehavior">
-        <!-- Screen content goes here. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -55,7 +54,6 @@
         android:backgroundTint="?attr/colorSecondary"
         android:hint="@string/search"
         app:layout_anchor="@id/search_bar">
-        <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search"
             android:layout_width="match_parent"

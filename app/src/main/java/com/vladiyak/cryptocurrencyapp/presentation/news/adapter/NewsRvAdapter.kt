@@ -47,7 +47,7 @@ class NewsRVAdapter(private val listener: INewsRVAdapter): ListAdapter<NewsData,
             Glide.with(holder.binding.root.context).load(R.drawable.ic_android).into(holder.binding.ivSourceImage)
         }
 
-        holder.binding.tvNewsTime.text = DateConverter.getTimeAgo(currentItem.publishedOn!!.toLong())
+        holder.binding.tvNewsTime.text = DateConverter.getTimeAgo(currentItem.publishedOn?.toLong() ?: 0)
 
         holder.binding.rlRootNewsItem.setOnClickListener {
             currentItem.url?.let { it1 -> listener.onNewsArticleClicked(it1) }

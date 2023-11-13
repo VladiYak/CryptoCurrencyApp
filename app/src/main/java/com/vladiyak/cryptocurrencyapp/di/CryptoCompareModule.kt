@@ -48,7 +48,7 @@ object CryptoCompareModule {
     private fun apiKeyAsQuery(chain: Interceptor.Chain) = chain.proceed(
         chain.request()
             .newBuilder()
-            .url(chain.request().url.newBuilder().addQueryParameter("api_key", Constants.ApiKey).build())
+            .url(chain.request().url.newBuilder().addQueryParameter("api_key", Constants.ApiKeyCryptoCompare).build())
             .build()
     )
 }

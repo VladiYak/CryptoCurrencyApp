@@ -16,6 +16,8 @@ object Constants {
 
     const val BASE_URL_CRYPTO_COMPARE = "https://min-api.cryptocompare.com/data/v2/"
 
-    const val ApiKey = "005c86e9e8129fdf8f8e3220ad3c16f68cd4ae387f6d39046f1824e4b9126ba6"
+    const val ApiKeyCryptoCompare = "005c86e9e8129fdf8f8e3220ad3c16f68cd4ae387f6d39046f1824e4b9126ba6"
+
+    const val ApiKeyCoinGecko = "CG-aKyQqV7fnmzHp7QLBXfJmUTf"
 
 }

@@ -35,7 +35,7 @@ class NewsFragment : Fragment(), INewsRVAdapter {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
         return binding.root
     }
