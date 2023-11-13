@@ -17,8 +17,8 @@
     <string name="home">Home</string>
     <string name="one_year">1Г</string>
     <string name="market_cap">Капитализация</string>
-    <string name="total_supply">Общее Предложение</string>
-    <string name="available_supply">Доступное Предложение</string>
+    <string name="total_supply">Общее предложение</string>
+    <string name="available_supply">Доступное предложение</string>
     <string name="total_volume">Общий объем торгов</string>
     <string name="all_time_high_price">Абсолютный максимум</string>
     <string name="all_time_low_price">Абсолютный минимум</string>
@@ -36,6 +36,7 @@
     <string name="max">MAX</string>
     <string name="crypto_icon">crypto icon</string>
     <string name="trending_coin_icon">trending coin</string>
+    <string name="powered_by">Powered by</string>
 
 
 </resources>

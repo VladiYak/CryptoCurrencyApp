@@ -325,7 +325,7 @@ class DetailFragment : Fragment() {
             // Deleting From Database
             viewModelFav.removeCoinFromFavourite(element)
             //Changing the Image To Border
-            binding.favtoggleButton.setImageResource(R.drawable.baseline_star_outline_24)
+            binding.favtoggleButton.setImageResource(R.drawable.baseline_star_outline_24_yellow)
             // Setting TAG to OFF
             binding.favtoggleButton.tag = "OFF"
         }

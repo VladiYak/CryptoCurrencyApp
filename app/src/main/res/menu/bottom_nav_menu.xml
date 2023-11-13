@@ -9,7 +9,7 @@
         android:title="@string/market" />
     <item
         android:id="@+id/newsFragment"
-        android:icon="@drawable/news"
+        android:icon="@drawable/news_icon"
         android:iconTint="@color/white"
         android:title="@string/news1" />
     <item

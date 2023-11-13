@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:indeterminate="true"
-        app:indicatorColor="#9FA8DA"
+        app:indicatorColor="@color/grey_light"
         android:layout_marginBottom="250dp"
-        app:trackThickness="20dp"
+        app:trackThickness="25dp"
         android:layout_gravity="center"/>
 
     <androidx.core.widget.NestedScrollView
