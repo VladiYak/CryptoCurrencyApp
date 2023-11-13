@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.news.NewsFragment"
+    tools:context=".presentation.news.NewsFragment"
     android:background="?attr/colorPrimary">
 
     <TextView
         android:id="@+id/tvNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="News"
-        android:textSize="28sp"
+        android:text="@string/news"
+        android:textSize="24sp"
         android:textColor="?attr/colorOnPrimary"
         android:fontFamily="@font/poppins_bold"
         android:layout_marginTop="10dp"

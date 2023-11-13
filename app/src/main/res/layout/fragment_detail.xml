@@ -200,6 +200,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/grey_light"
                         android:text="@string/one_day" />
 
                     <com.google.android.material.chip.Chip
@@ -207,6 +208,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/grey_light"
                         android:text="@string/seven_day" />
 
                     <com.google.android.material.chip.Chip
@@ -214,6 +216,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/grey_light"
                         android:text="@string/fourteen_day" />
 
                     <com.google.android.material.chip.Chip
@@ -221,6 +224,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/grey_light"
                         android:text="@string/thirty_day" />
 
                     <com.google.android.material.chip.Chip
@@ -228,6 +232,7 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/grey_light"
                         android:text="@string/one_year" />
 
                     <com.google.android.material.chip.Chip
@@ -235,7 +240,8 @@
                         style="@style/Theme.Cryptolit.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="MAX" />
+                        app:chipBackgroundColor="@color/grey_light"
+                        android:text="@string/max" />
 
                 </com.google.android.material.chip.ChipGroup>
 
@@ -247,7 +253,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="20dp"
-                    android:text="Market Data"
+                    android:text="@string/market_data"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
