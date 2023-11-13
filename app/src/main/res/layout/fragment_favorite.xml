@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/dark_background"
+    android:background="?attr/colorSecondary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nothing_in_favourite"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnPrimary"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textAlignment="center"
             android:textStyle="bold"/>
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/add_coin"
-            android:textColor="@color/white" />
+            android:textColor="?attr/colorOnPrimary" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +47,8 @@
             android:id="@+id/toolbarFav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/dark_background_app_bar"
+            app:title="Favorite Coins"
+            android:background="?attr/colorPrimaryVariant"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />

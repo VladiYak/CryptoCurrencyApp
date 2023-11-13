@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.domain.models
 
-import com.vladiyak.cryptocurrencyapp.data.local.entities.FavoriteEntity
+import com.vladiyak.cryptocurrencyapp.data.local.database.entities.FavoriteEntity
 
 
 data class FavoriteCoin(

@@ -20,6 +20,8 @@ import com.vladiyak.cryptocurrencyapp.presentation.home.adapters.CoinsRecyclerAd
 import com.vladiyak.cryptocurrencyapp.presentation.home.adapters.TrendingCoinsAdapter
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListener
 import com.vladiyak.cryptocurrencyapp.utils.OnClickListenerTrendingItem
+import com.vladiyak.cryptocurrencyapp.utils.ThemeHelper
+import com.vladiyak.cryptocurrencyapp.utils.ThemeMode
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
     ): View? {
         (activity as MainActivity).supportActionBar?.hide()
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        ThemeHelper.applyTheme(if (viewModel.isDarkModeOn()) ThemeMode.Dark else ThemeMode.Light)
 
         return binding.root
     }
@@ -52,6 +55,11 @@ class HomeFragment : Fragment() {
             viewModel.getCoins()
             viewModel.getTrendingCoins()
             binding.swipeRefresh.isRefreshing = false
+        }
+
+        binding.settingsIcon.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+            findNavController().navigate(action)
         }
     }
 

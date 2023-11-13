@@ -2,7 +2,7 @@ package com.vladiyak.cryptocurrencyapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.vladiyak.cryptocurrencyapp.data.local.AppDatabase
+import com.vladiyak.cryptocurrencyapp.data.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
 package com.vladiyak.cryptocurrencyapp.domain.usecases.impl
 
-import com.vladiyak.cryptocurrencyapp.data.local.entities.toFavoriteCoin
+import com.vladiyak.cryptocurrencyapp.data.local.database.entities.toFavoriteCoin
 import com.vladiyak.cryptocurrencyapp.domain.models.FavoriteCoin
 import com.vladiyak.cryptocurrencyapp.domain.repository.CoinRepository
 import com.vladiyak.cryptocurrencyapp.domain.usecases.GetAllFavoriteUseCase

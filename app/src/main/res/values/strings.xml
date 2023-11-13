@@ -40,6 +40,7 @@
     <string name="all_time_low_date">All-Time Low Date</string>
     <string name="top_coins">Top Coins</string>
     <string name="trending_coins">Trending Coins</string>
+    <string name="dark_mode">Dark Mode</string>
 
 
 </resources>

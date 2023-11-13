@@ -1,8 +1,8 @@
 package com.vladiyak.cryptocurrencyapp.data.repositories
 
 
-import com.vladiyak.cryptocurrencyapp.data.local.entities.FavoriteEntity
-import com.vladiyak.cryptocurrencyapp.data.local.FavouriteDao
+import com.vladiyak.cryptocurrencyapp.data.local.database.entities.FavoriteEntity
+import com.vladiyak.cryptocurrencyapp.data.local.database.FavouriteDao
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.CoinGeckoApiService
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinDetailDto
 import com.vladiyak.cryptocurrencyapp.data.network.coinsapi.dto.coins.CoinItemDto

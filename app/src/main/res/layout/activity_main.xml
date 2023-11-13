@@ -9,14 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        >
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:layout_height="?attr/actionBarSize" />
+        android:fitsSystemWindows="true">
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/dark_background_app_bar"
+        android:background="?attr/colorPrimaryVariant"
         app:layout_insetEdge="bottom"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:menu="@menu/bottom_nav_menu"

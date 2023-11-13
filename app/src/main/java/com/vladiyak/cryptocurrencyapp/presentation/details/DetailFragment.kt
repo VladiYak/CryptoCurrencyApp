@@ -82,7 +82,7 @@ class DetailFragment : Fragment() {
             viewModelFav.allFavouriteCoin.observe(viewLifecycleOwner) { favouriteEntities ->
                 favouriteEntities.forEach {
                     if (it.coinId == args.coinId) {
-                        binding.favtoggleButton.setImageResource(R.drawable.ic_star)
+                        binding.favtoggleButton.setImageResource(R.drawable.baseline_star_24_yellow)
                         binding.favtoggleButton.tag = "ON"
                     }
                 }
@@ -316,7 +316,7 @@ class DetailFragment : Fragment() {
 
         if (binding.favtoggleButton.tag != "ON") {
             // Changing  the Image To Filled
-            binding.favtoggleButton.setImageResource(R.drawable.ic_star)
+            binding.favtoggleButton.setImageResource(R.drawable.baseline_star_24_yellow)
             //  Adding To DB
             viewModelFav.addToFavourites(element)
             // Changing the TAG to ON
@@ -325,7 +325,7 @@ class DetailFragment : Fragment() {
             // Deleting From Database
             viewModelFav.removeCoinFromFavourite(element)
             //Changing the Image To Border
-            binding.favtoggleButton.setImageResource(R.drawable.ic_star_outline)
+            binding.favtoggleButton.setImageResource(R.drawable.baseline_star_outline_24)
             // Setting TAG to OFF
             binding.favtoggleButton.tag = "OFF"
         }

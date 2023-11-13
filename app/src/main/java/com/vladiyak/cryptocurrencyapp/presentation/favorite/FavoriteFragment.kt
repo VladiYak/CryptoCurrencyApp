@@ -43,7 +43,6 @@ class FavoriteFragment : Fragment() {
 
         //Setting the toolbar
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbarFav)
-        (activity as AppCompatActivity).supportActionBar!!.title = "Favourite Coins";
 
         // Setting the Listeners
         binding.moveToHomeButton.setOnClickListener {

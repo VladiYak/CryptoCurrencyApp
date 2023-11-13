@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/dark_background"
+    android:background="?attr/colorSecondary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
@@ -31,15 +31,16 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/search_appbar"
-                android:background="@color/dark_background"
+                android:background="?attr/colorSecondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.search.SearchBar
                     android:id="@+id/search_bar"
                     android:layout_width="match_parent"
-                    android:backgroundTint="@color/dark_background_search_bar"
+                    android:backgroundTint="?attr/colorSecondaryVariant"
                     android:layout_height="wrap_content"
+                    android:elevation="12dp"
                     android:hint="@string/search"
                     app:forceDefaultNavigationOnClickListener="true" />
             </com.google.android.material.appbar.AppBarLayout>
@@ -51,7 +52,7 @@
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/dark_background"
+        android:backgroundTint="?attr/colorSecondary"
         android:hint="@string/search"
         app:layout_anchor="@id/search_bar">
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
