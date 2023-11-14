@@ -57,7 +57,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search"
             android:layout_width="match_parent"
-            android:background="@color/dark_background"
+            android:background="?attr/colorSecondary"
             android:layout_height="match_parent"
             tools:listitem="@layout/search_item" />
     </com.google.android.material.search.SearchView>
