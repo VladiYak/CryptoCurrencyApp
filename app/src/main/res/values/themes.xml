@@ -8,6 +8,7 @@
         <item name="colorSecondaryVariant">@color/grey_light</item>
         <item name="colorOnSecondary">@color/dark_background</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
     </style>
 
         <style name="textView_style">
