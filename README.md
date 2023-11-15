@@ -38,8 +38,14 @@
 
 ## Screenshots
 
-
-
+<p float="left">
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-155949_CryptoCurrencyApp.jpg" width="25%" />
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-160149_CryptoCurrencyApp.jpg" width="25%" />
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-160205_CryptoCurrencyApp.jpg" width="25%" />
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-160215_CryptoCurrencyApp.jpg" width="25%" />
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-160223_CryptoCurrencyApp.jpg" width="25%" />
+  <img src="https://github.com/VladiYak95/CryptoCurrencyApp/blob/master/metadata/images/phoneScreenshots/Screenshot_20231115-160303_CryptoCurrencyApp.jpg" width="25%" />
+</p>
 
 
 ## Credits
