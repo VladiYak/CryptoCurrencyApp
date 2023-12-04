@@ -4,7 +4,7 @@
 
 
 
-![Logo](https://github.com/VladiYak95/CryptoCurrencyApp/blob/74ede138130de16c89a26c81e18d26f379605be3/app/src/main/res/drawable/exodus.png)
+![Logo](https://github.com/VladiYak95/CryptoCurrencyApp/blob/ed008459f64303d1d209f6cb68bd97b3df7af4c1/app/src/main/res/drawable/exodus.png)
 
 
 ## Build with
