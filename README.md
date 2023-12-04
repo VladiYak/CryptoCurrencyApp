@@ -4,7 +4,7 @@
 
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://github.com/VladiYak95/CryptoCurrencyApp/blob/74ede138130de16c89a26c81e18d26f379605be3/app/src/main/res/drawable/starting_logo.png)
 
 
 ## Build with
